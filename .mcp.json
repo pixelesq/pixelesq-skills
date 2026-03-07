@@ -1,0 +1,7 @@
+{
+	"mcpServers": {
+		"pixelesq": {
+			"url": "https://pixelesq-mcp.pixelesq.workers.dev/mcp"
+		}
+	}
+}
