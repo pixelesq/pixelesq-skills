@@ -1,15 +1,27 @@
 {
-  "name": "pixelesq",
-  "displayName": "Pixelesq",
-  "version": "1.0.0",
-  "description": "Manage Pixelesq websites — create pages, edit content, monitor SEO, and publish updates",
-  "author": {
-    "name": "Pixelesq",
-    "email": "hello@pixelesq.com",
-    "url": "https://www.pixelesq.com"
-  },
-  "homepage": "https://www.pixelesq.com",
-  "repository": "https://github.com/pixelesq/pixelesq-skills",
-  "keywords": ["website", "cms", "seo", "content", "pages", "webops"],
-  "license": "MIT"
+	"name": "pixelesq",
+	"displayName": "Pixelesq",
+	"version": "1.0.0",
+	"description": "Manage Pixelesq websites — create pages, optimize SEO, configure design themes, analyze traffic, write brand-aligned content, and publish updates with 38 tools and 4 specialist agents",
+	"author": {
+		"name": "Pixelesq",
+		"email": "hello@pixelesq.com",
+		"url": "https://www.pixelesq.com"
+	},
+	"homepage": "https://www.pixelesq.com",
+	"repository": "https://github.com/pixelesq/pixelesq-skills",
+	"keywords": [
+		"website",
+		"cms",
+		"seo",
+		"content",
+		"pages",
+		"webops",
+		"analytics",
+		"design",
+		"theming",
+		"publishing",
+		"ai"
+	],
+	"license": "MIT"
 }
