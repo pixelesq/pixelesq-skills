@@ -1,91 +1,127 @@
-# Pixelesq Skills
+# Pixelesq Agent Skills
 
-Agent Skills for managing [Pixelesq](https://www.pixelesq.com) websites. Create pages, edit content, monitor SEO, manage collections, and publish updates through any compatible AI agent.
+Manage your [Pixelesq](https://www.pixelesq.com) websites from any AI agent. Create pages, write content, optimize SEO, configure design, analyze traffic, and publish -- all through natural conversation.
 
-## Installing
+## What's included
 
-These skills work with any agent that supports the [Agent Skills](https://agentskills.io/) standard.
-
-### Claude Code
-
-```bash
-claude plugin marketplace add pixelesq/pixelesq-skills
-claude plugin install pixelesq@pixelesq-skills
-```
-
-### Cursor
-
-Install from the Cursor Marketplace or add manually via **Settings > Rules > Add Rule > Remote Rule (Github)** with `pixelesq/pixelesq-skills`.
-
-### npx skills
-
-```bash
-npx skills add https://github.com/pixelesq/pixelesq-skills
-```
-
-### Manual install
-
-Clone this repo and copy the `skills/` folder into your agent's skills directory:
-
-| Agent | Skills directory | Docs |
-|-------|-----------------|------|
-| Claude Code | `~/.claude/skills/` | [docs](https://code.claude.com/docs/en/skills) |
-| Cursor | `~/.cursor/skills/` | [docs](https://cursor.com/docs/skills) |
-| OpenAI Codex | `~/.codex/skills/` | [docs](https://developers.openai.com/codex/skills/) |
-| OpenCode | `~/.config/opencode/skills/` | [docs](https://opencode.ai/docs/skills/) |
-
-## Prerequisites
-
-1. **Pixelesq account** -- Sign up at [app.pixelesq.ai](https://app.pixelesq.ai)
-2. **MCP server configured** -- The `.mcp.json` in this repo points to the Pixelesq MCP server. Your agent needs MCP support enabled.
-3. **Authentication** -- When first connecting, you'll authenticate via Google sign-in or email/OTP
-
-## Skills
+### 6 Skills
 
 | Skill | Description |
 |-------|-------------|
-| Website Management | Create pages with 60+ section types, edit content, manage collections and entries, publish updates, handle project settings |
-| SEO Optimization | Analyze Google Search Console data, optimize meta titles and descriptions, manage redirects, check indexing status |
-| Content Creation | Write blog posts, build landing pages, create collection entries with brand voice matching and structured content |
+| **website-management** | Pages, sections, partials, forms, collections, domains, assets |
+| **seo-optimization** | Google Search Console, meta optimization, JSON-LD, redirects, IndexNow |
+| **content-creation** | Blog posts, landing pages, collection entries, copywriting frameworks |
+| **design-theming** | Theme colors, typography, spacing, section selection, page composition |
+| **analytics-growth** | Traffic analysis, form conversions, Web Vitals, AI referral tracking |
+| **site-operations** | Site launch, domains, publishing, redirects, webhooks, integrations |
 
-## Agent
+### 4 Agents
 
-| Agent | Description |
-|-------|-------------|
-| Site Manager | Autonomous agent for multi-step website management -- builds complete pages, runs SEO audits, manages content in bulk |
+| Agent | Focus |
+|-------|-------|
+| **Site Manager** | General-purpose management with all 38 tools |
+| **SEO Specialist** | Search audits, GSC analysis, meta optimization |
+| **Content Strategist** | Brand-aligned writing with copywriting frameworks |
+| **Design Consultant** | Theme configuration, section selection, visual composition |
 
-## MCP Tools (40 total)
+### 38 MCP Tools
 
-### Pages (9 tools)
-`list_pages`, `get_page`, `get_page_content`, `create_page`, `update_page_meta`, `save_page_content`, `publish_page`, `unpublish_page`, `delete_page`
+Projects, pages, collections, entries, sections, SEO, analytics, redirects, themes, assets, forms, partials, and domains.
 
-### Collections & Entries (9 tools)
-`list_collections`, `get_collection`, `list_entries`, `get_entry`, `create_entry`, `update_entry`, `save_entry_content`, `publish_entry`, `delete_entry`
+## Compatibility
 
-### Section Catalog (2 tools)
-`list_section_types`, `get_section_defaults`
+These skills follow the [Agent Skills](https://agentskills.io) open standard and work across:
 
-### SEO & Analytics (8 tools)
-`get_search_performance`, `get_page_index_status`, `get_all_page_statuses`, `inspect_url`, `get_gsc_connection_status`, `get_site_analytics`, `list_redirects`, `create_redirect`
+- **Claude** (claude.ai, Claude Code, Claude API)
+- **Cursor**
+- **OpenAI Codex**
+- **GitHub Copilot / VS Code**
+- **Gemini CLI**
+- **Goose, Roo Code, Amp, Junie**
+- And 20+ other compatible platforms
 
-### Projects (3 tools)
-`list_projects`, `get_project`, `list_domains`
+## Setup
 
-### Forms (2 tools)
-`list_forms`, `get_form_submissions`
+### Claude Code / Cursor
 
-### Assets & Themes (3 tools)
-`list_assets`, `get_theme`, `update_theme`
+Install as a plugin:
 
-### Partials (2 tools)
-`list_partials`, `get_partial_content`
+```
+/plugin install pixelesq-skills
+```
 
-## Resources
+Or add the MCP server manually in your project's `.mcp.json`:
 
-- [Pixelesq](https://www.pixelesq.com) -- AI-native website builder
-- [MCP Server Documentation](https://www.pixelesq.com/docs/integrations/claude) -- Setup, tools, and examples
-- [Privacy Policy](https://www.pixelesq.com/legal/privacy-policy)
-- [Support](mailto:hello@pixelesq.com)
+```json
+{
+  "mcpServers": {
+    "pixelesq": {
+      "url": "https://pixelesq-mcp.pixelesq.workers.dev/mcp"
+    }
+  }
+}
+```
+
+### Other platforms
+
+1. Clone this repository
+2. Point your agent's skills directory to the `skills/` folder
+3. Configure the MCP server URL: `https://pixelesq-mcp.pixelesq.workers.dev/mcp`
+
+## Authentication
+
+The MCP server uses OAuth. When you first connect, you'll be prompted to sign in with your Pixelesq account (Google or email/OTP).
+
+## Repository Structure
+
+```
+pixelesq-skills/
+├── .claude-plugin/plugin.json
+├── .cursor-plugin/plugin.json
+├── .mcp.json
+├── AGENTS.md
+├── CLAUDE.md
+├── LICENSE
+├── README.md
+├── agents/
+│   ├── site-manager.md
+│   ├── seo-specialist.md
+│   ├── content-strategist.md
+│   └── design-consultant.md
+└── skills/
+    ├── website-management/
+    │   ├── SKILL.md
+    │   └── references/
+    │       ├── section-guide.md
+    │       └── site-recipes.md
+    ├── seo-optimization/
+    │   ├── SKILL.md
+    │   └── references/
+    │       ├── json-ld-recipes.md
+    │       └── social-meta-specs.md
+    ├── content-creation/
+    │   ├── SKILL.md
+    │   └── references/
+    │       └── quality-rubric.md
+    ├── design-theming/
+    │   ├── SKILL.md
+    │   └── references/
+    │       ├── font-pairings.md
+    │       └── section-visual-guide.md
+    ├── analytics-growth/
+    │   └── SKILL.md
+    └── site-operations/
+        ├── SKILL.md
+        └── references/
+            ├── pre-launch-checklist.md
+            └── webhook-patterns.md
+```
+
+## Links
+
+- [Pixelesq](https://www.pixelesq.com) -- AI-native WebOps platform
+- [Agent Skills Spec](https://agentskills.io) -- The open standard for agent capabilities
+- [MCP](https://modelcontextprotocol.io) -- Model Context Protocol
 
 ## License
 
