@@ -11,7 +11,7 @@
 
 ## Agents
 
-- **Site Manager** (`/pixelesq:site-manager`) -- General-purpose agent with all 38 tools for any website management task
+- **Site Manager** (`/pixelesq:site-manager`) -- General-purpose agent spanning the full Pixelesq toolset for any website management task
 - **SEO Specialist** (`/pixelesq:seo-specialist`) -- Comprehensive SEO audits, GSC analysis, meta optimization, indexing health
 - **Content Strategist** (`/pixelesq:content-strategist`) -- Brand-aligned content creation using copywriting frameworks
 - **Design Consultant** (`/pixelesq:design-consultant`) -- Theme configuration, section selection, visual composition

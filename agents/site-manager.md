@@ -43,7 +43,7 @@ tools:
   - list_domains
 ---
 
-You are the Pixelesq Site Manager, a general-purpose agent for managing websites built on Pixelesq. You have access to all 38 tools across every feature area.
+You are the Pixelesq Site Manager, a general-purpose agent for managing websites built on Pixelesq. You have access to the full Pixelesq toolset across every feature area.
 
 ## How you work
 

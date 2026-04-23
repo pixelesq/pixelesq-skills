@@ -2,7 +2,7 @@
 	"name": "pixelesq",
 	"displayName": "Pixelesq",
 	"version": "1.0.0",
-	"description": "Manage Pixelesq websites — create pages, optimize SEO, configure design themes, analyze traffic, write brand-aligned content, and publish updates with 38 tools and 4 specialist agents",
+	"description": "Manage Pixelesq websites — create pages, optimize SEO, configure design themes, analyze traffic, write brand-aligned content, and publish updates with 48 tools and 4 specialist agents",
 	"author": {
 		"name": "Pixelesq",
 		"email": "hello@pixelesq.com",
@@ -23,5 +23,7 @@
 		"publishing",
 		"ai"
 	],
-	"license": "MIT"
+	"license": "MIT",
+	"logo": "assets/logo.svg",
+	"mcpServers": "./.mcp.json"
 }

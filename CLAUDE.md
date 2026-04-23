@@ -11,11 +11,11 @@
 
 ## Agents
 
-- `/pixelesq:site-manager` -- General-purpose website management with all 38 tools
+- `/pixelesq:site-manager` -- General-purpose website management across the full Pixelesq toolset
 - `/pixelesq:seo-specialist` -- SEO audits, GSC analysis, meta optimization, indexing health
 - `/pixelesq:content-strategist` -- Brand-aligned content creation with copywriting frameworks
 - `/pixelesq:design-consultant` -- Theme, section selection, and visual composition
 
 ## MCP Server
 
-The Pixelesq MCP server provides 38 tools for website management. Connect via `.mcp.json` in this repository.
+The Pixelesq MCP server provides 48 tools for website management. Connect via `.mcp.json` in this repository.

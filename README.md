@@ -19,12 +19,12 @@ Manage your [Pixelesq](https://www.pixelesq.com) websites from any AI agent. Cre
 
 | Agent | Focus |
 |-------|-------|
-| **Site Manager** | General-purpose management with all 38 tools |
+| **Site Manager** | General-purpose management across the full Pixelesq toolset |
 | **SEO Specialist** | Search audits, GSC analysis, meta optimization |
 | **Content Strategist** | Brand-aligned writing with copywriting frameworks |
 | **Design Consultant** | Theme configuration, section selection, visual composition |
 
-### 38 MCP Tools
+### 48 MCP Tools
 
 Projects, pages, collections, entries, sections, SEO, analytics, redirects, themes, assets, forms, partials, and domains.
 
