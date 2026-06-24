@@ -18,6 +18,7 @@
 - **Bitter** -- slab serif, works well on screen
 - **Arvo** -- geometric slab serif, strong personality
 - **Marcellus** -- refined, classical proportions
+- **EB Garamond** -- classic old-style serif, literary and refined
 
 ### Sans-Serif (modern, clean, versatile)
 - **Inter** -- ultra-readable, designed for screens
@@ -51,10 +52,12 @@
 - **Oxygen** -- clean, European
 - **PT Sans** -- versatile companion to PT Serif
 - **Schibsted Grotesk** -- editorial, Scandinavian feel
+- **Dosis** -- rounded, geometric, light and friendly
 
 ### Display / Specialty
 - **Satoshi** -- geometric, modern, great for headings
 - **Manrope** -- semi-rounded, versatile for display and body
+- **Bricolage Grotesque** -- contemporary grotesque with display character
 
 ## Recommended Pairings by Brand Personality
 
@@ -73,6 +76,7 @@
 | Marcellus | Raleway | Refined, editorial |
 | Libre Baskerville | Open Sans | Traditional sophistication |
 | Lora | Mulish | Contemporary elegance |
+| EB Garamond | Mulish | Literary, classic |
 
 ### Bold & Energetic
 | Heading | Body | Character |
@@ -89,6 +93,7 @@
 | Quicksand | DM Sans | Playful, rounded |
 | Figtree | Source Sans Pro | Open, welcoming |
 | Cabin | Lato | Humanist, natural |
+| Dosis | Nunito | Soft, rounded, playful |
 
 ### Professional & Trustworthy
 | Heading | Body | Character |
@@ -105,6 +110,7 @@
 | Arvo | DM Sans | Distinctive, memorable |
 | Bitter | Mukta | Characterful, readable |
 | Schibsted Grotesk | Lora | Scandinavian editorial |
+| Bricolage Grotesque | Inter | Editorial, contemporary |
 
 ## Single-Font Strategies
 
