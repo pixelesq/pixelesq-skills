@@ -1,158 +1,71 @@
 ---
 name: design-theming
-description: Configures website visual design -- theme colors, typography, spacing, and section selection for cohesive brand presentation. Use when editing themes, choosing fonts, adjusting colors, or planning page visual composition.
+description: Configures a Pixelesq site's visual design through the theme (colors, typography, spacing, radius, appearance) and chooses sections by the look they produce. Use when the user wants to restyle a site, change fonts or colors, review visual composition, or pick sections for a particular visual effect.
 license: MIT
 metadata:
   author: pixelesq
-  version: "1.0"
+  version: "3.0"
 ---
 
-# Pixelesq Design & Theming
+# Pixelesq Design and Theming
 
-## Theme System Overview
+## The theme
 
-Every Pixelesq project has a theme controlling the visual foundation. Use `get_theme` to read current values and `update_theme` to modify them.
+Every project has an active theme. `get_theme` returns its `id`, `variables` (what the live site renders), `hasUnpublishedDraft`, and `draftVariables` when the theme editor holds staged changes. `update_theme` takes the `themeId`, a `variables` patch and `publish`.
 
-### Theme variables
+The variables object, as the server returns it:
 
 ```
-variables: {
-  appearance: "light" | "dark",
-  color: {
-    accent: string,       // Primary brand color (CTAs, highlights, links)
-    gray: string,         // Text, borders, subtle backgrounds
-    background: string    // Page background
-  },
-  font: {
-    defaultFontFamily: string,   // Body text font
-    headingFontFamily: string    // Heading font (optional override)
-  },
-  fontSize: { scale: string },   // Type scale ratio
-  fontWeight: { ... },           // Weight mappings
-  radius: string,                // Border radius (none, small, medium, large, full)
-  scaling: string,               // Global size multiplier
-  spacing: string,               // Padding/margin base
-  container: string              // Max content width
-}
+appearance: "light" | "dark"
+radius: "none" | "small" | "medium" | "large" | "full"
+scaling: "90%" | "95%" | "100%" | "105%" | "110%"
+font: { defaultFontFamily, headingFontFamily }
+color: { accent, background, gray, accentScale[], grayScale[], accentSurface, accentContrast }
+spacing: [9 steps]          fontSize: [9 steps]        fontWeight: [4 steps]
+lineHeight: [9 steps]       headingLineHeight: [9 steps]   letterSpacing: [9 steps]
+container: [4 max widths]
 ```
 
-## Color Strategy
+Send only what changes: `{ color: { accent: "#0F766E" } }` leaves everything else alone. Arrays are replaced whole, so send all steps when you change one. `publish` defaults to true and restyles the live site at once; pass `publish: false` to stage a draft the user reviews in the theme editor. If a draft already exists, your change layers on it.
 
-### The three color roles
+## Color
 
-- **Accent** -- the primary brand color. Applied to buttons, links, highlights, active states. This is the color users associate with the brand. Pick based on brand identity, not personal preference.
-- **Gray** -- text color, borders, dividers, secondary elements. Determines readability and visual hierarchy. Neutral tones (slate, gray, zinc) work for most sites. Warmer tones (stone, sand) for lifestyle brands.
-- **Background** -- page canvas color. White/light for clean modern feel. Dark for tech/creative. Subtle tints for warmth.
+- **Accent** carries the brand: buttons, links, highlights. Take it from the logo or the brand guide, not from taste.
+- **Gray** sets text, borders and quiet backgrounds: cool grays for tech, warm grays for lifestyle and food.
+- **Background** is the canvas: white or near-white for content-heavy sites, dark for products and portfolios that want drama.
+- `accentScale` and `grayScale` accept full twelve-step scales for brands that ship their own palette; otherwise leave them and let the accent generate the scale.
 
-### Color selection by industry
+By industry, as a starting point: SaaS and tech, blue or violet on slate; creative, a bold orange, pink or cyan; finance and legal, navy or emerald; health, teal or green on warm gray; food and hospitality, amber or red on cream; commerce, the logo color on neutral gray.
 
-- **SaaS / Tech**: Blue or violet accent, slate gray, white background
-- **Creative / Design**: Bold accent (orange, pink, cyan), neutral gray, white or dark bg
-- **Finance / Legal**: Navy or emerald accent, cool gray, white background
-- **Health / Wellness**: Teal or green accent, warm gray, white or light background
-- **Food / Hospitality**: Warm accent (amber, orange, red), warm gray, cream background
-- **E-commerce**: Accent matching brand logo, neutral gray, white background
-
-### Light vs Dark appearance
-
-- **Light**: Better for content-heavy sites, blogs, professional services. Higher readability for long text. Use when the audience expects a traditional web experience.
-- **Dark**: Suits tech products, creative portfolios, entertainment. Reduces eye strain in low-light. Use when the brand has a modern/edgy identity.
+**Appearance** changes the whole site and only switches with explicit approval.
 
 ## Typography
 
-### Font pairing principles
+`font.defaultFontFamily` is the body font and `font.headingFontFamily` the optional heading override; when the override is empty, headings use the body font. Pair a display face with a readable body face and keep proportions close. Pairings by brand personality and the full font list are in [references/font-pairings.md](references/font-pairings.md). Use one family when the brand is minimal.
 
-- Pair a **display/heading** font with a **body** font
-- Contrast is key: pair serif headings with sans-serif body, or a bold geometric sans with a clean readable sans
-- Both fonts should share similar proportions (x-height, letter spacing)
-- Avoid pairing two fonts that are too similar -- they'll look like a mistake
+## Shape and rhythm
 
-### Quick pairing recommendations
+- **radius**: `none` for corporate, `small` for clean, `medium` for friendly, `large` or `full` for playful.
+- **scaling** nudges every size together; use it before touching individual scales.
+- **spacing** widens or tightens the rhythm site-wide; wider for editorial and luxury, tighter for dense product pages.
+- **container** sets the four content widths from narrow reading columns to full layouts.
 
-**Modern & Clean:** `Montserrat` (headings) + `Inter` (body)
-**Elegant & Refined:** `Playfair Display` (headings) + `Lora` (body)
-**Bold & Contemporary:** `Space Grotesk` (headings) + `DM Sans` (body)
-**Friendly & Approachable:** `Nunito` (headings) + `Open Sans` (body)
-**Professional & Trustworthy:** `Merriweather` (headings) + `Source Sans Pro` (body)
+## Choosing sections by look
 
-For the complete font catalog (40+ fonts) with pairings by brand personality, see [references/font-pairings.md](references/font-pairings.md).
+The catalog grouped by visual effect is in [references/section-visual-guide.md](references/section-visual-guide.md), generated from the live server. In short: full-bleed heroes and media grids for impact; cards and icon grids for structure; sticky and tabbed sections for momentum; rolling and moving sections for energy, one per screen; simple heroes, banners and single stats for focus.
 
-### Typography settings
+## Composition
 
-- `defaultFontFamily` -- the body text font, used everywhere unless overridden
-- `headingFontFamily` -- optional heading override. If empty, headings use the body font.
-- `fontSize.scale` -- controls the ratio between heading sizes. Larger scale = more dramatic hierarchy.
-- Set both fonts when the design calls for contrast. Use a single font when the brand is minimal/uniform.
+1. Open with a hero that sets the tone: full-bleed for drama, card for restraint, `HeroSocialProof` or `HeroWithStats` when proof is the message.
+2. Alternate dense and quiet sections; a `SectionDivider` or a single `Testimonial` after a grid.
+3. Build momentum toward the close and end on one clear call to action.
+4. Check the phone layout for sliders and sticky sections before publishing.
 
-## Section Selection by Visual Intent
+Page-type recipes: landing (impact hero, logos, sticky features, stats, testimonials, FAQ, banner), content (simple hero, cards, text grid, media grid, CTA), portfolio (full-bleed hero, bento grid, stats, testimonial, CTA), blog listing (blog hero, media cards, newsletter form).
 
-Choose sections not just by content type, but by the visual effect you want:
+## Workflow and safety
 
-### High visual impact
-StickyFeatures, HeroWithMediaBg, MediaBentoCards, HeroWithMediaInset -- immersive, scrollytelling, full-bleed
-
-### Clean and structured
-IconFeatures, SimpleHero, CardWithMedia, TextGrid -- organized, professional, easy to scan
-
-### Dynamic and engaging
-FeaturesCarousel, TestimonialSlider, MediaCardSlider, MovingLogos -- motion, interaction, energy
-
-### Dense information
-PqPricingTable, FaqsInGrid, MediaGridAlt, BentoCards -- lots of content in compact space
-
-### Minimal and focused
-SimpleHero, Banner, JustStats, SimpleMedia -- single message, maximum whitespace
-
-For the complete visual guide with all 50+ sections, see [references/section-visual-guide.md](references/section-visual-guide.md).
-
-## Page Composition
-
-### Visual flow principles
-
-1. **Start strong** -- the hero sets the visual tone. Full-bleed heroes (HeroWithMediaBg) create drama. Contained heroes (HeroCard) create sophistication.
-2. **Alternate density** -- follow content-heavy sections with visual breathing room. After a feature grid, place a single testimonial or stat.
-3. **Build momentum** -- increase engagement intensity toward the CTA. StickyFeatures or carousels create scroll momentum.
-4. **End with clarity** -- the final section before the footer should have a clear CTA with minimal distraction.
-
-### Composition by page type
-
-**Landing page (conversion):**
-High-impact hero -> logo strip -> sticky features -> stats -> testimonials -> FAQ -> CTA banner
-Visual character: dramatic opening, building trust, removing objections, clear exit action.
-
-**Content page (information):**
-Simple hero -> card sections -> text grid -> media grid -> CTA
-Visual character: clean, readable, structured, professional.
-
-**Portfolio page (showcase):**
-Full-bleed hero -> bento grid -> case study cards -> stats -> testimonial -> CTA
-Visual character: visual-first, dramatic, proof-driven.
-
-**Blog listing:**
-Blog hero -> media cards (grid) -> newsletter CTA
-Visual character: clean, scannable, content-forward.
-
-## Applying Theme Changes
-
-### Workflow
-
-1. `get_theme` to read current variables
-2. `get_project` to understand brand context
-3. Propose changes with rationale (e.g., "Changing accent from blue to teal to better match your wellness brand")
-4. `update_theme` with the modified variables object
-5. Changes apply globally -- all pages using this theme update immediately
-
-### What to change and when
-
-- **Accent color**: when the current color doesn't match brand identity or has poor contrast
-- **Fonts**: when readability is poor or the typography doesn't match brand personality
-- **Radius**: `none` for corporate, `small` for clean, `medium` for friendly, `large/full` for playful
-- **Appearance**: switch only with user confirmation -- it affects the entire site
-- **Spacing**: affects whitespace globally. Increase for luxury/editorial feel, decrease for dense/data-heavy sites.
-
-### Safety
-
-Theme changes are global and immediate. Always:
-- Show the user what will change before executing
-- Explain the visual impact
-- Confirm before applying
+1. `get_theme` and `get_project` first.
+2. Propose the change with the rationale and the before and after values.
+3. Apply with `update_theme`, staging with `publish: false` unless the user asked for it to go live now.
+4. Theme changes touch every page. Confirm before publishing.

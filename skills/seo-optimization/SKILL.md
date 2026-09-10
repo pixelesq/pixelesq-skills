@@ -1,201 +1,58 @@
 ---
 name: seo-optimization
-description: Audits and improves website SEO using Google Search Console data, meta optimization, JSON-LD structured data, URL redirects, IndexNow, and AI citation tracking. Use when analyzing search performance, rankings, indexing status, or making SEO improvements.
+description: Audits and improves a Pixelesq site's search presence with Google Search Console data, page metadata, JSON-LD structured data, indexing checks and redirects. Use when the user asks about rankings, indexing, metadata, structured data, redirects, or how to get more search and AI traffic.
 license: MIT
 metadata:
   author: pixelesq
-  version: "2.0"
+  version: "3.0"
 ---
 
 # Pixelesq SEO Optimization
 
-## GSC Connection Check
+## Search Console first
 
-Always start by verifying Google Search Console status:
+`get_gsc_connection_status` returns `connected`, `siteUrl`, `verified`, `lastSynced` and `needsReconnect`. When it is not connected, the Search Console tools (`get_search_performance`, `get_page_index_status`, `get_all_page_statuses`, `inspect_url`) answer `null`: say so and point the user to the dashboard's integrations settings instead of reporting zeros. Search Console data trails Google by about three days.
 
-1. `get_gsc_connection_status` -- check `connected`, `siteUrl`, `lastSynced`
-2. If not connected, direct user to Settings > App Integrations in the Pixelesq dashboard
-3. GSC data has a ~3 day delay from Google -- check `lastSynced` for freshness
+## Search performance
 
-## Search Performance Analysis
+`get_search_performance` with `period` `LAST_7_DAYS`, `LAST_28_DAYS` or `LAST_90_DAYS` gives clicks, impressions, click rate and average position. Speak in the user's terms: search clicks, search appearances, click rate, average ranking.
 
-Use `get_search_performance` with period: `LAST_7_DAYS`, `LAST_28_DAYS`, or `LAST_90_DAYS`.
+- Many appearances, low click rate: the title and description are not earning the click.
+- Positions 5 to 20 with real impressions: striking distance, the highest-return work on any site.
+- Top three positions: protect them; do not rewrite what works.
+- Falling clicks over a quarter: refresh or expand the page.
 
-### How to interpret
+**Striking distance workflow:** pull 28 days, keep queries between positions 5 and 20 sorted by impressions, then per page `get_page` for the current metadata, `get_page_content` to see whether the query's words appear, `update_page_meta` to align title and description, and a note to check again in a month.
 
-- **Clicks** -- actual visits from search results
-- **Impressions** -- how often pages appeared in search (visibility)
-- **CTR** -- clicks / impressions. Benchmark by position:
-  - Position 1: ~27-30% CTR
-  - Position 2: ~15%
-  - Position 3: ~10%
-  - Positions 4-10: 2-7%
-  - If CTR is below these for a given position, the title/description needs improvement
-- **Position** -- average ranking (1 = best). Higher numbers = worse ranking
+## Indexing
 
-### Opportunity identification
+`get_all_page_statuses` for the site, `get_page_index_status` for one page, `inspect_url` for the crawl, robots and canonical detail of a URL. Crawled but not indexed usually means thin or duplicate content; a blocked page usually means a robots or `index: false` setting; a 404 wants `create_redirect`.
 
-- **High impressions, low CTR** -- pages appearing in search but not getting clicked. Improve title and meta description.
-- **Positions 5-20 with decent impressions** -- "striking distance" keywords close to page 1. Priority targets for optimization.
-- **High clicks, high position** (already top 3) -- protect these. Don't change what's working.
-- **Declining clicks over time** -- content may be going stale. Refresh or expand.
+## Metadata
 
-## Striking Distance Workflow
+`update_page_meta` sets `title`, `description`, `image` (the Open Graph image, 1200 by 630), `index` (false to keep a page out of search) and the structured data. Read `get_page` first so nothing good is overwritten.
 
-The highest-ROI SEO activity. Pages ranking positions 5-20 need small improvements to reach page 1.
+Titles, 50 to 60 characters: home "[Brand]: [value proposition]"; product "[Product]: [benefit] | [Brand]"; post "[Topic]: [promise] | [Brand]"; local "[Service] in [City] | [Brand]"; category "[Category] | [Brand]". Descriptions, 150 to 160 characters, start with a verb, carry the keyword naturally, end with the reason to click.
 
-1. `get_search_performance` with `LAST_28_DAYS`
-2. Filter queries with position between 5 and 20
-3. Sort by impressions (highest first) -- these have the most traffic potential
-4. For top opportunities:
-   a. `get_page` to read current meta title and description
-   b. `get_page_content` to check if the keyword appears in content
-   c. `update_page_meta` to optimize title and description around the target query
-5. Track: revisit in 2-4 weeks with `get_search_performance` to measure improvement
+Social previews reuse title, description and image through the Open Graph and Twitter tags. Per-platform overrides are a dashboard feature, not an MCP field; the specs per platform are in [references/social-meta-specs.md](references/social-meta-specs.md).
 
-## Indexing Health
+## Structured data
 
-### Site-wide check
-
-`get_all_page_statuses` returns indexing status for every page:
-- **Verdict**: `PASS` (indexed), `NEUTRAL`, `FAIL` (not indexed)
-- **coverageState**: why a page is or isn't indexed
-- **indexingState**: `INDEXING_ALLOWED` or blocked
-- **lastCrawlTime**: when Google last visited
-- **cwvCategory**: Core Web Vitals assessment
-
-### Page-level deep dive
-
-`inspect_url` for detailed analysis of a specific URL:
-- Crawl status and any errors
-- robots.txt blocking
-- Canonical URL
-- Mobile usability
-
-### Common issues and fixes
-
-- **Crawled but not indexed**: content may be thin or duplicate. Expand content, add unique value.
-- **Blocked by robots.txt**: check project settings for robots configuration.
-- **Not found (404)**: create a redirect with `create_redirect`.
-- **Redirect error**: check redirect chains with `list_redirects`.
-
-## Meta Optimization
-
-### Title formulas (50-60 characters)
-
-- **Homepage**: `[Brand] - [Primary Value Proposition]`
-- **Product/Feature**: `[Product] - [Key Benefit] | [Brand]`
-- **Blog post**: `[Topic]: [Specific Promise] | [Brand]`
-- **Local business**: `[Service] in [City] - [Brand Name]`
-- **Category/Collection**: `[Category] — Browse [Count]+ [Items] | [Brand]`
-- **About**: `About [Brand] - [Differentiator]`
-- **Contact**: `Contact [Brand] - [Response Promise]`
-
-### Description templates (150-160 characters)
-
-- Start with a verb (Discover, Learn, Get, Build, Find)
-- Include the primary keyword naturally
-- End with a value proposition or call to action
-- Example: `Discover how [Brand] helps [audience] [achieve outcome]. [Unique value]. Get started free.`
-
-### Using update_page_meta
-
-```
-update_page_meta(projectId, pageId, {
-  title: "...",
-  description: "...",
-  image: "og-image-url",    // 1200x630px recommended
-  index: true               // false to noindex
-})
-```
-
-Always check existing meta with `get_page` first to avoid overwriting good content.
-
-## JSON-LD Structured Data
-
-Set JSON-LD via `update_page_meta` in the `jsonLd` field. For complete recipes for 10+ page types, see [references/json-ld-recipes.md](references/json-ld-recipes.md).
-
-**Quick reference -- which schema for which page:**
-
-- Homepage -> WebSite + Organization
-- Blog post -> Article or BlogPosting
-- FAQ page -> FAQPage
-- Product page -> Product
-- Local business -> LocalBusiness
-- About page -> AboutPage + Organization
-- Contact page -> ContactPage
-- How-to guide -> HowTo
-- Breadcrumbs -> BreadcrumbList (add to any page)
+`update_page_meta` takes `jsonLD` to replace the whole document as a JSON string (pass `""` to clear) or `jsonLDPatch` to merge keys into the existing document; both are validated as a schema.org node, an array of nodes, or an object with `@context` and `@graph`. Prefer the patch for one-key edits so nothing else is dropped. Recipes for a dozen page types are in [references/json-ld-recipes.md](references/json-ld-recipes.md): `WebSite` and `Organization` on the home page, `Article` or `BlogPosting` on posts, `FAQPage` where a page has FAQs, `Product`, `LocalBusiness`, `HowTo`, `BreadcrumbList`.
 
 ## Redirects
 
-### When to use
+`list_redirects` first, to avoid chains. `create_redirect` takes `source`, `destination`, `permanent` (true for 301, false for 302) and a `description` that says why. `update_redirect` changes any of those or `active`; `delete_redirect` removes one. Use permanent redirects for renamed and merged pages and migrations, temporary ones for campaigns and tests, and never chain one redirect into another.
 
-- `create_redirect` with `statusCode: 301` for permanent moves (slug changes, restructuring)
-- `create_redirect` with `statusCode: 302` for temporary moves (seasonal content, A/B tests)
-- Always include a description explaining why the redirect exists
+## IndexNow and AI discovery
 
-### Common patterns
+IndexNow notifies Bing, Yandex, Seznam, Yep and Naver on publish once enabled in the dashboard; Google relies on its own crawl and Search Console. For AI assistants, `get_ai_referral_analytics` shows what they already send; llms.txt and the sitemap in the project features, FAQ sections in clear question and answer form, and structured data all raise the chance of being cited.
 
-- **Slug change**: old slug -> new slug (301)
-- **Page consolidation**: merged pages -> surviving page (301)
-- **Domain migration**: old paths -> new paths (301, bulk)
-- **Trailing slash normalization**: `/page/` -> `/page` or vice versa (301)
-- **Vanity URLs**: `/go/demo` -> full destination URL (302)
+## Site audit
 
-### Best practices
-
-- Check `list_redirects` before creating to avoid chains (A -> B -> C)
-- Redirect chains slow down crawling and dilute link equity
-- After creating redirects, verify with `inspect_url`
-
-## IndexNow
-
-IndexNow instantly notifies search engines when content changes. Supported engines: Bing, Yandex, Seznam, Yep, Naver.
-
-Enable in project Settings > Website > IndexNow. Once enabled, publishing a page automatically sends notifications.
-
-Google does NOT support IndexNow -- it relies on its own crawling and GSC.
-
-## AI Citation Tracking
-
-### What it is
-
-AI platforms (ChatGPT, Claude, Perplexity, Gemini, Copilot) increasingly reference and link to websites. This traffic appears in analytics.
-
-### How to track
-
-`get_site_analytics` shows traffic sources including AI referrals. Look for:
-- `chatgpt.com` / `chat.openai.com`
-- `claude.ai`
-- `perplexity.ai`
-- `gemini.google.com`
-- `copilot.microsoft.com`
-
-### How to grow AI citations
-
-- Enable **llms.txt** in project features (Settings > One-tap Features) -- this creates a machine-readable summary of site content that AI crawlers use
-- Write clear, factual, well-structured content
-- Use proper schema.org JSON-LD
-- Maintain a comprehensive sitemap
-
-## Social Meta
-
-For per-platform specifications (Twitter, Facebook, LinkedIn, Instagram), see [references/social-meta-specs.md](references/social-meta-specs.md).
-
-Social meta is set via the `socials` field on page meta. Each platform has different title, description, and image dimension requirements.
-
-## SEO Audit Workflow
-
-Complete site-wide audit checklist:
-
-1. `get_gsc_connection_status` -- verify GSC is connected
-2. `list_pages` -- get all pages
-3. For each published page:
-   - `get_page` -- check meta title, description, OG image, index status
-   - Flag: missing title, title too short/long, missing description, no OG image
-4. `get_all_page_statuses` -- check indexing health
-   - Flag: pages not indexed, crawl errors, poor Web Vitals
-5. `get_search_performance` with `LAST_28_DAYS` -- identify striking distance opportunities
-6. `list_redirects` -- check for redirect chains or orphaned redirects
-7. Present findings with severity (critical / warning / suggestion) and prioritize by traffic impact
+1. `get_gsc_connection_status`.
+2. `list_pages` and `get_page` per published page: missing or long titles and descriptions, missing Open Graph image, `index` set wrong, duplicate titles.
+3. `get_all_page_statuses` for indexing and, where reported, Core Web Vitals.
+4. `get_search_performance` for 28 days: striking distance and low click rate pages.
+5. `list_redirects` for chains and stale rules.
+6. Report by severity (critical, warning, suggestion), ordered by traffic impact, with the five quickest wins first.

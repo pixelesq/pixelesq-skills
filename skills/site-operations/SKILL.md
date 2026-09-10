@@ -1,190 +1,57 @@
 ---
 name: site-operations
-description: Manages website launch, domains, publishing workflows, redirects, webhooks, and integrations for operational infrastructure. Use when launching a site, setting up domains, configuring redirects, managing webhooks, or handling post-launch maintenance.
+description: Runs the operational side of a Pixelesq site: pre-launch checks, publishing order, domains, redirects, recovery from a bad change, and the monitoring routine after launch. Use when the user is launching, migrating, publishing a batch of changes, connecting a domain, or asking what to check regularly.
 license: MIT
 metadata:
   author: pixelesq
-  version: "1.0"
+  version: "3.0"
 ---
 
 # Pixelesq Site Operations
 
-## Pre-Launch Workflow
+## Pre-launch check with tools
 
-Before launching a site, run through the complete checklist. For the detailed 20+ item checklist, see [references/pre-launch-checklist.md](references/pre-launch-checklist.md).
+1. `list_pages`: every planned page exists; note which are still drafts.
+2. `get_page_content` per page: real copy, no placeholder text, images with alt text.
+3. `get_page` per page: title, description, Open Graph image, `index` true where it should be.
+4. `list_partials`: a header and a footer exist, with their published revisions.
+5. `get_theme`: brand colors and fonts, not defaults.
+6. `list_forms`: the contact or lead form exists; `get_form_submissions` confirms a test submission arrived.
+7. `list_domains`: the custom domain is present and verified.
+8. `list_redirects`: old URLs redirect if this is a migration.
+9. `get_gsc_connection_status`: Search Console connected.
 
-### Quick validation using tools
+The full checklist with the dashboard-only items (sitemap, robots, llms.txt, IndexNow, custom tags, favicon, legal pages) is in [references/pre-launch-checklist.md](references/pre-launch-checklist.md).
 
-1. `list_pages` -- verify all planned pages exist and are in draft
-2. `get_page_content` for each page -- confirm real content (no placeholder text)
-3. `get_page` for each page -- check meta title, description, and OG image are set
-4. `list_partials` -- verify header and footer exist
-5. `get_theme` -- confirm theme is configured (colors, fonts, not defaults)
-6. `list_forms` -- verify forms exist for lead capture / contact
-7. `list_domains` -- check custom domain is set up and verified
-8. `list_redirects` -- confirm redirects from old site are in place (if migrating)
-9. `get_gsc_connection_status` -- verify Google Search Console is connected
+## Publishing
 
-### Launch order
+- `publish_page`, `publish_partial` and `publish_entry` change the live site. Each takes the revision id plus `expectedRevisionId` and `expectedHeadAnchor` from the read the user reviewed, and refuses if the draft moved since.
+- `unpublish_page` and `unpublish_partial` take content offline and keep the draft. An unpublished partial disappears from every page that embeds it.
+- Scheduled publishing is set in the dashboard, not through these tools.
 
-1. **Partials first** -- header and footer must be published before pages look complete
-2. **Core pages** -- homepage, about, contact, pricing (the pages linked from navigation)
-3. **Secondary pages** -- feature pages, service pages, landing pages
-4. **Blog entries** -- publish collection entries last
-5. **Verify live** -- check the published site URL to confirm everything renders correctly
+**Launch order:** partials first (`publish_partial` for header and footer), then the home page, then the pages linked from the navigation, then the rest, then collection entries. Open each live URL after publishing.
 
-## Domain Management
+## Recovery
 
-### Checking domain status
+- A bad edit on a page: `get_page_revisions`, then `revert_page_revision` to the last good revision, review, publish.
+- Unwanted saves on the current draft: `revert_page_revision_to_version` to an earlier numbered version; the newer versions are deleted, so confirm first.
+- A wrong publish: publish the previous revision again, or `unpublish_page` while it is fixed.
 
-`list_domains` returns all custom domains with:
-- `hostname` -- the domain name
-- `verified` -- whether DNS is verified
-- `active` -- whether the domain is active
+## Domains
 
-### Domain setup flow
+`list_domains` shows `hostname`, `verified` and `misconfigured`. Setup is in the dashboard: add the domain, create the records at the registrar (CNAME for www, A record or ALIAS for the root, TXT for verification), wait for propagation, verify. Common blockers: a proxying DNS provider in front of the records, a wrong record type, propagation not finished.
 
-Domain setup happens in the Pixelesq dashboard (Settings > Domain):
+## Redirects
 
-1. Add the custom domain
-2. Configure DNS records at the domain registrar:
-   - **CNAME**: point `www` to Pixelesq's target
-   - **A record**: point root domain to Pixelesq's IP
-   - **TXT record**: for domain verification
-3. Wait for DNS propagation (can take up to 48 hours, usually faster)
-4. Verify in Pixelesq dashboard
-5. Confirm with `list_domains` that `verified: true`
+`list_redirects` before creating anything. `create_redirect` with `source`, `destination`, `permanent` (true for 301, false for 302) and a `description`; `update_redirect` to change or deactivate; `delete_redirect` to remove. Migrations: one rule per old path, straight to the final destination, no chains. Renames: a permanent redirect from the old slug. Campaign links: a temporary redirect to the real page.
 
-### Common issues
+## Dashboard-only operations
 
-- DNS not propagated yet -- advise waiting and rechecking
-- Wrong record type -- CNAME vs A record confusion
-- Proxy enabled (Cloudflare orange cloud) -- may need to pause proxy for verification
+Custom tags in the head or body (analytics, pixels, chat widgets, consent banners), webhooks on page and entry events (patterns in [references/webhook-patterns.md](references/webhook-patterns.md)), and integrations (Slack, Linear, Zoho CRM, Google Search Console) are configured in the dashboard. Say so when the user asks for them and point to the setting.
 
-## Publishing Strategy
+## After launch
 
-### Draft -> Publish workflow
-
-All content starts as a draft. Publishing makes it live immediately.
-
-- `publish_page` -- requires the latest revision ID. Get it from `get_page`.
-- `publish_entry` -- same pattern for collection entries.
-- `unpublish_page` -- takes content offline while preserving the draft.
-
-### Scheduled publishing
-
-Pixelesq supports scheduled publishing through the dashboard. Pages can be set to auto-publish at a specific date/time. This is managed in the dashboard, not via MCP tools.
-
-### Staged rollout for new sites
-
-When launching a full new site:
-
-1. Publish partials (header/footer) -- they're invisible until pages are published
-2. Publish the homepage first -- it's the entry point
-3. Publish pages linked from the homepage navigation
-4. Publish remaining pages
-5. Publish blog entries
-6. Verify each page after publishing
-
-## Redirect Management
-
-### Common redirect scenarios
-
-**Site migration (old domain -> new domain):**
-```
-create_redirect for each old URL path:
-  source: "/old-path"
-  destination: "/new-path"
-  statusCode: 301
-  description: "Migration from old site"
-```
-
-**Slug change:**
-When renaming a page URL, create a redirect from the old slug:
-```
-source: "/old-slug"
-destination: "/new-slug"
-statusCode: 301
-description: "Page renamed"
-```
-
-**Page consolidation:**
-When merging multiple pages into one:
-```
-source: "/page-a"  ->  destination: "/combined-page"  (301)
-source: "/page-b"  ->  destination: "/combined-page"  (301)
-```
-
-**Vanity URLs:**
-Short memorable URLs for campaigns:
-```
-source: "/go/demo"
-destination: "/product/request-demo"
-statusCode: 302
-description: "Demo campaign URL"
-```
-
-### Redirect best practices
-
-- Always use `list_redirects` first to check for existing redirects
-- Avoid redirect chains (A -> B -> C). Each redirect should point directly to the final destination.
-- Use 301 for permanent changes, 302 for temporary
-- Include a description for every redirect explaining the reason
-- After migration, test key URLs to confirm redirects work
-
-## Custom Tags
-
-Custom tags are managed in the Pixelesq dashboard (Settings > Website > Custom Tags). They inject code into the `<head>` or `<body>` of every page.
-
-### Common uses
-
-- **Google Analytics**: GA4 tracking script in `<head>`
-- **Facebook Pixel**: Meta tracking pixel in `<head>`
-- **Hotjar**: Session recording in `<head>`
-- **Custom CSS**: Site-wide style overrides in `<head>`
-- **Chat widgets**: Third-party chat scripts in `<body>`
-- **Cookie consent**: Cookie banner scripts in `<body>`
-
-This is configured in the dashboard, not via MCP tools. Mention it when users ask about analytics tracking or third-party integrations.
-
-## Webhooks
-
-For webhook subscription events and automation patterns, see [references/webhook-patterns.md](references/webhook-patterns.md).
-
-Webhooks notify external services when events happen in Pixelesq. They're configured in the dashboard under Settings > Webhooks.
-
-## Integrations
-
-Pixelesq integrates with external services (configured in Settings > App Integrations):
-
-- **Slack** -- receive notifications when pages are published, use @pixel for AI assistance in Slack
-- **Linear** -- sync tasks and issues, use @pixel for AI assistance in Linear
-- **Zoho CRM** -- sync form submissions to Zoho contacts
-- **Google Search Console** -- search performance data and indexing status
-
-These are set up in the dashboard. When users mention wanting notifications or CRM sync, point them to the appropriate integration.
-
-## Post-Launch Monitoring
-
-### Daily (first week)
-- Check `get_site_analytics` for traffic patterns
-- Monitor for any 404 errors or missing pages
-- Verify forms are receiving submissions with `get_form_submissions`
-
-### Weekly
-- `get_search_performance` to track search visibility
-- `get_all_page_statuses` to monitor indexing progress
-- Review form submissions for quality
-- Check `list_redirects` for any new redirect needs
-
-### Monthly
-- Full analytics review (28d period comparison)
-- Content freshness check -- are published pages still current?
-- SEO audit -- meta titles, descriptions, indexing health
-- Theme review -- does the design still serve the brand?
-
-### Quarterly
-- Comprehensive SEO audit with striking distance analysis
-- Content gap analysis -- what topics should be added?
-- Performance review -- Web Vitals trends
-- AI citation tracking -- growth in AI referral traffic
+- First week, daily: `get_site_analytics` for the first traffic, `get_form_submissions` for the first leads, live URLs for anything missing.
+- Weekly: `get_search_performance`, `get_all_page_statuses` for indexing progress, `list_redirects` for new needs.
+- Monthly: the 30-day comparison, content freshness, metadata review.
+- Quarterly: the full audit in the seo-optimization skill, AI referral growth with `get_ai_referral_analytics`, a design review with `get_theme`.

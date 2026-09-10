@@ -1,179 +1,66 @@
 ---
 name: content-creation
-description: Creates and manages website content -- blog posts, landing pages, collection entries, and page sections with brand-aligned copywriting. Use when writing, creating, editing, or publishing content on a Pixelesq site.
+description: Writes and manages Pixelesq website content in the project's brand voice: blog posts and collection entries, landing pages built from sections, copy edits, images, and internal linking. Use when the user wants content written, rewritten, expanded or published on a Pixelesq site.
 license: MIT
 metadata:
   author: pixelesq
-  version: "2.0"
+  version: "3.0"
 ---
 
 # Pixelesq Content Creation
 
-## Brand Voice Extraction
+## Brand voice first
 
-Before creating any content, extract brand context from `get_project`:
+Call `get_project` before writing anything and read `setting.context`:
 
-### siteProfile
-- `industry` -- determines vocabulary and jargon level
-- `title`, `description`, `tagline` -- core messaging to echo in all content
+- `siteProfile`: industry, title, description, tagline. Echo the positioning; use the industry's vocabulary at the reader's level.
+- `audienceStrategy`: personas (role, goals, pain points), primary goal, user intent. Write to the persona, toward the goal.
+- `contentGeneration`: tone, formality, reading level, brand personality, core keywords, CTA style, forbidden words, must-mention terms, default disclaimer. These are rules, not suggestions: a casual, friendly setting means contractions and second person; a formal, authoritative one means precise language and evidence.
 
-### audienceStrategy
-- `personas` -- who the content speaks to (role, pain points, goals)
-- `primaryGoal` -- what the site aims to achieve (leads, sales, awareness)
-- `userIntent` -- what visitors are looking for
+When these fields are empty, ask two or three questions (who it is for, what they should do next, how the brand sounds) before drafting.
 
-### contentGeneration
-- `tone` -- e.g., professional, casual, friendly, authoritative
-- `formality` -- formal, semi-formal, casual
-- `readingLevel` -- simple, moderate, advanced
-- `brandPersonality` -- traits that define the brand voice
+## What kind of content
 
-**How to apply:** Match tone and vocabulary to these settings. If `formality` is casual and `tone` is friendly, use contractions, second person, and conversational phrasing. If `formality` is formal and `tone` is authoritative, use precise language, avoid contractions, cite data.
+- One-off pages (home, about, pricing, contact, landing pages): **pages** built from sections.
+- Repeated, structured content (posts, case studies, team, products): **collection entries**. With `hasPages: true` each entry has its own page rendered by the collection's template.
+- Shared blocks (header, footer, a CTA on every page): **partials**.
 
-## Content Type Decision Tree
+## Blog post or entry
 
-- **One-off pages** (homepage, about, pricing, contact) -> create a **page** with sections
-- **Repeatable structured content** (blog posts, case studies, team bios, products) -> create **collection entries**
-- **Shared across pages** (header, footer, sidebar CTA) -> these are **partials** (managed in dashboard)
+1. `list_collections`, then `get_collection` for the exact field schema: `name`, `type`, `required`, and `list` (an array of values). Reference fields take entry ids.
+2. Draft the piece: title, excerpt, structure, then the body as HTML (`<h2>`, `<h3>`, `<p>`, `<ul>`, `<ol>`, `<strong>`, `<em>`, `<a href="/slug">`, `<blockquote>`). Short paragraphs, headings that scan, internal links with descriptive anchors.
+3. `create_entry` with name, slug and the content in one call (it validates against the schema and returns warnings), or `create_entry` then `save_entry_content` with the entry's `lastVersion` from `get_entry`.
+4. Images: `list_assets` first; `search_stock_images` then `upload_asset` for a stock photo; `upload_image` for a file the user has. Field type `media` takes `{ src, alt }`; always write the alt.
+5. If the collection has pages, `get_entry` returns the entry's page; set its SEO fields with `update_page_meta` (title 50 to 60 characters, description 150 to 160, image, `jsonLDPatch` for structured data).
+6. Show the draft, then offer `publish_entry` with `expectedRevisionId` and `expectedHeadAnchor` from the last read.
 
-**When a collection has `hasPages: true`**, each entry gets its own page automatically via the collection's template. Blog posts are the most common example.
+`update_entry` renames an entry or changes its slug; `duplicate_entry` clones one as a starting point; `delete_entry` is permanent and needs confirmation.
 
-## Blog Post Workflow
+## Landing page
 
-### Step 1: Find the blog collection
+1. Agree the page's single purpose and pick a frame: **AIDA** (hero for attention, features for interest, proof for desire, a banner or form for action) or **PAS** (hero names the problem, a content section deepens it, features present the solution, a form closes).
+2. `create_page` with a descriptive name and a slug with a leading slash.
+3. For each section: `get_section_defaults` for the type, write the `ctx` values, keep `cfg`, then `insert_section` with `position: -1` and fresh UUIDs. Section choices by intent are in the website-management catalog.
+4. `update_page_meta` with the SEO title, description and image.
+5. Offer `publish_page` with the two expectations.
 
-```
-list_collections(projectId)
-```
+## Editing copy on an existing page
 
-Look for a collection with fields like `title`, `content`, `author`, `featured_image`. If `hasPages: true`, entries will auto-generate pages.
+1. `get_page_content` once to see the sections, or `get_section_content` for the section the user named.
+2. Change only the named fields and `save_section_content` with the current `lastVersion`. Arrays (`items`, `ctas`, `media`) are replaced whole, so send the full array when changing one item.
+3. Summarize what changed and offer to publish.
 
-### Step 2: Understand the field schema
+For bulk changes across pages: `list_pages`, then per page read, edit, save, keeping a running list; publish nothing until the user has reviewed the set.
 
-```
-get_collection(projectId, collectionId)
-```
+## Writing rules
 
-Note each field's `name`, `type`, and `required` flag. Content must match exactly.
+- **Headlines:** specific and benefit-led, six to twelve words, no vague promises.
+- **Descriptions:** one idea per paragraph, concrete detail, the brand's tone.
+- **Calls to action:** an action verb and a clear outcome ("Start the free trial", "Book a walkthrough"); a friction reducer beside it where true ("No card needed").
+- **Items** (features, FAQs, testimonials): three to six per section, parallel structure, each self-contained.
+- **Links:** descriptive anchor text; find targets with `search_content`, `list_pages` and `list_entries`; link new content from existing pages too.
+- **Never invent facts** about the business: numbers, client names, awards and claims come from the user or the site.
 
-### Step 3: Create the entry
+## Before publishing
 
-```
-create_entry(projectId, collectionId, { name: "Post Title", slug: "post-title" })
-```
-
-### Step 4: Write content
-
-Map content to the schema fields:
-
-- **text** fields: plain string
-- **html** fields: well-formatted HTML using `<p>`, `<h2>`, `<h3>`, `<strong>`, `<em>`, `<ul>`, `<ol>`, `<li>`, `<a href="">`, `<blockquote>`
-- **image** fields: URL string (use `list_assets` to find existing project images)
-- **date** fields: ISO date string (e.g., `2026-03-05`)
-- **reference** fields: ID of another entry (e.g., author entry ID)
-- **number** fields: numeric value
-- **boolean** fields: true/false
-
-### Step 5: Save and publish
-
-```
-save_entry_content(projectId, entryId, { content: {...}, lastVersion: N })
-publish_entry(projectId, entryId, revisionId)
-```
-
-### Step 6: SEO
-
-If the collection has pages, use `update_page_meta` on the entry's linked page to set title, description, and OG image.
-
-### HTML content quality
-
-- Start with a compelling opening paragraph
-- Use `<h2>` for main sections, `<h3>` for subsections
-- Keep paragraphs short (2-4 sentences)
-- Use lists for scannable content
-- Include internal links to other pages: `<a href="/page-slug">anchor text</a>`
-- Bold key phrases with `<strong>` for scannability
-
-## Landing Page Creation
-
-### Copywriting frameworks mapped to sections
-
-**AIDA (Attention -> Interest -> Desire -> Action):**
-1. **Hero** section (Attention) -- bold headline addressing the core problem or aspiration
-2. **Features** section (Interest) -- how the product/service works
-3. **Testimonials** section (Desire) -- social proof showing real results
-4. **CTA** section (Action) -- clear call to action with urgency
-
-**PAS (Problem -> Agitate -> Solution):**
-1. **Hero** (Problem) -- name the pain point directly
-2. **Content** section (Agitate) -- deepen the problem with consequences
-3. **Features** (Solution) -- present the solution with benefits
-4. **CTA** -- remove friction with a clear next step
-
-### Page creation flow
-
-1. Clarify the page's single purpose (lead gen, product showcase, information)
-2. Select a framework (AIDA for benefits-led, PAS for problem-led)
-3. `list_section_types` filtered by relevant groups
-4. `get_section_defaults` for each section
-5. Write content following the framework and brand voice
-6. `save_page_content` with all sections
-7. `update_page_meta` with SEO-optimized title and description
-8. Offer to `publish_page`
-
-### Section content principles
-
-**Headlines:**
-- Be specific, not vague: "Reduce support tickets by 40%" beats "Improve customer support"
-- Lead with the benefit, not the feature
-- 6-12 words optimal
-
-**Descriptions:**
-- Expand on the headline with concrete details
-- One idea per paragraph
-- Use the brand's tone from contentGeneration
-
-**CTAs:**
-- Tell the user exactly what happens: "Start free trial" not "Submit"
-- Use action verbs: Get, Start, Build, Discover, Join
-- Pair with a supporting line reducing friction: "No credit card required"
-
-**Items (features, FAQs, testimonials):**
-- 3-6 items per section (cognitive sweet spot)
-- Parallel structure across item titles
-- Each item should stand alone while contributing to the section narrative
-
-## Editing Existing Content
-
-1. `get_page_content` or `get_entry` to read current content
-2. Understand the specific change requested
-3. Make targeted edits preserving structure and layout (`cfg` unchanged)
-4. `save_page_content` or `save_entry_content` with `lastVersion`
-5. Summarize changes and offer to publish
-
-For bulk updates (e.g., updating CTAs across the site):
-1. `list_pages` to get all pages
-2. `get_page_content` for each page
-3. Identify sections needing changes
-4. Update systematically, tracking progress
-5. Confirm all changes before publishing
-
-## Cross-Linking Strategy
-
-- Link blog posts to related service/product pages
-- Link product pages to relevant case studies or testimonials
-- Use descriptive anchor text (not "click here")
-- Internal links help both SEO and user navigation
-- When creating new content, check `list_pages` and `list_entries` for linking opportunities
-
-## Content Quality
-
-For a detailed 10-point quality rubric, see [references/quality-rubric.md](references/quality-rubric.md).
-
-**Quick checklist before publishing:**
-- [ ] Headlines are clear and specific
-- [ ] Brand voice matches project context
-- [ ] CTAs have action verbs and clear outcomes
-- [ ] Images have alt text
-- [ ] Internal links to related content
-- [ ] Meta title and description set
+Run the ten-point rubric in [references/quality-rubric.md](references/quality-rubric.md). Minimum: clear headline, brand voice, strong CTA, alt text on images, internal links, metadata set.

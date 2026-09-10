@@ -1,29 +1,33 @@
 {
 	"name": "pixelesq",
 	"displayName": "Pixelesq",
-	"version": "1.0.0",
-	"description": "Manage Pixelesq websites — create pages, optimize SEO, configure design themes, analyze traffic, write brand-aligned content, and publish updates with 48 tools and 4 specialist agents",
+	"version": "1.1.0",
+	"description": "Manage Pixelesq websites from a conversation: seven skills, four specialist agents and the Pixelesq MCP connector with 65 tools for pages, sections, content collections, SEO, analytics, redirects, images and themes.",
 	"author": {
 		"name": "Pixelesq",
 		"email": "hello@pixelesq.com",
 		"url": "https://www.pixelesq.com"
 	},
-	"homepage": "https://www.pixelesq.com",
+	"homepage": "https://www.pixelesq.com/docs/integrations/cursor",
 	"repository": "https://github.com/pixelesq/pixelesq-skills",
 	"keywords": [
 		"website",
+		"website-builder",
+		"ai-website-builder",
+		"ai-native-website-builder",
 		"cms",
 		"seo",
 		"content",
 		"pages",
 		"webops",
 		"analytics",
+		"ai-native",
 		"design",
 		"theming",
 		"publishing",
-		"ai"
+		"mcp"
 	],
 	"license": "MIT",
 	"logo": "assets/logo.svg",
-	"mcpServers": "./.mcp.json"
+	"mcpServers": "./mcp.json"
 }

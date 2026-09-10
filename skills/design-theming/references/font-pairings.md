@@ -8,6 +8,8 @@
 
 ## Available Fonts by Category
 
+These 50 families are the ones the theme editor offers; `update_theme` takes the family name exactly as written here in `typography.fontFamily.heading` and `.body`. Fonts outside this list are not loaded on the site.
+
 ### Serif (classic, editorial, trustworthy)
 - **Playfair Display** -- elegant, high-contrast display serif
 - **Lora** -- contemporary serif, great body text
@@ -19,6 +21,8 @@
 - **Arvo** -- geometric slab serif, strong personality
 - **Marcellus** -- refined, classical proportions
 - **EB Garamond** -- classic old-style serif, literary and refined
+- **IBM Plex Serif** -- technical serif, pairs with IBM Plex Sans
+- **Roboto Slab** -- sturdy slab serif, friendly and clear
 
 ### Sans-Serif (modern, clean, versatile)
 - **Inter** -- ultra-readable, designed for screens
@@ -53,6 +57,11 @@
 - **PT Sans** -- versatile companion to PT Serif
 - **Schibsted Grotesk** -- editorial, Scandinavian feel
 - **Dosis** -- rounded, geometric, light and friendly
+- **Noto Sans** -- neutral, very wide language support
+- **Roboto Condensed** -- narrow, space-saving, good for dense navigation
+
+### Monospace
+- **Roboto Mono** -- code samples, technical products, tabular figures
 
 ### Display / Specialty
 - **Satoshi** -- geometric, modern, great for headings

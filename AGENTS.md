@@ -1,17 +1,39 @@
-# Pixelesq Agent Skills
+# Pixelesq agent skills
+
+Skills, agents and the MCP connector for managing websites built on [Pixelesq](https://www.pixelesq.com). Read `skills/getting-started/SKILL.md` first: it has the connection steps, the full tool map and the rules that keep edits safe.
+
+## Connector
+
+- Server: `https://mcp.pixelesq.app/mcp` (streamable HTTP, OAuth 2.1 with PKCE, 65 tools).
+- Sign-in: Google, or a Pixelesq email and the code it sends.
+- Scopes granted at sign-in: `projects:read`, `content:read`, `content:write`, `publish`, `analytics:read`.
+- Edits land in drafts. The live site changes only through `publish_page`, `publish_partial`, `publish_entry` and `update_theme` with `publish: true`.
 
 ## Skills
 
-- **website-management** -- Manages Pixelesq websites: pages, sections, partials, forms, collections, domains, and assets
-- **seo-optimization** -- Audits and improves SEO: Google Search Console, meta optimization, JSON-LD, redirects, IndexNow, AI citations
-- **content-creation** -- Creates brand-aligned content: blog posts, landing pages, collection entries with copywriting frameworks
-- **design-theming** -- Configures visual design: theme colors, typography, spacing, section selection, page composition
-- **analytics-growth** -- Analyzes traffic, search performance, form conversions, Web Vitals, and AI referral data
-- **site-operations** -- Manages launch, domains, publishing workflows, redirects, webhooks, and integrations
+| Skill | Use it for |
+|---|---|
+| `getting-started` | Connecting a client, the tool map, scopes, the safety rules |
+| `website-management` | Pages, sections, partials, collections, entries, images, forms, domains |
+| `content-creation` | Blog posts, landing pages, entries, section copy in the brand voice |
+| `design-theming` | Theme colors, fonts, spacing, radius, appearance, section choice by look |
+| `seo-optimization` | Search Console, metadata, structured data, indexing, redirects |
+| `analytics-growth` | Traffic, search performance, forms, AI referrals, Web Vitals |
+| `site-operations` | Launch checks, publishing order, domains, recovery, monitoring |
 
 ## Agents
 
-- **Site Manager** (`/pixelesq:site-manager`) -- General-purpose agent spanning the full Pixelesq toolset for any website management task
-- **SEO Specialist** (`/pixelesq:seo-specialist`) -- Comprehensive SEO audits, GSC analysis, meta optimization, indexing health
-- **Content Strategist** (`/pixelesq:content-strategist`) -- Brand-aligned content creation using copywriting frameworks
-- **Design Consultant** (`/pixelesq:design-consultant`) -- Theme configuration, section selection, visual composition
+| Agent | Focus |
+|---|---|
+| `site-manager` | Any site task end to end, delegating to the specialists |
+| `seo-specialist` | Audits, Search Console, metadata, structured data, redirects |
+| `content-strategist` | Brand-aligned writing and entry creation |
+| `design-consultant` | Theme, typography, composition, section swaps |
+
+## Rules for every agent
+
+1. Confirm the project with `list_projects` when the user has more than one.
+2. Read before writing; every save carries the `lastVersion` from that read.
+3. Saves merge field by field; arrays replace whole; `null` clears a field.
+4. Publish, unpublish and delete only after the user says yes, with `expectedRevisionId` and `expectedHeadAnchor` from the read they reviewed.
+5. Never invent business facts, numbers, names or quotes.

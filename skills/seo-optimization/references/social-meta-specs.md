@@ -71,21 +71,12 @@
 
 ---
 
-## How Social Meta Maps in Pixelesq
+## How social meta maps in Pixelesq
 
-The `socials` field on page meta contains platform-specific overrides. When set via the Pixelesq dashboard, each platform can have its own title, description, and image.
+Through the MCP tools, `update_page_meta` sets one title, one description and one image per page; the site renders them as the Open Graph and Twitter tags every platform reads:
 
-Via the MCP tools, `update_page_meta` sets the primary OG meta:
-- `title` -> og:title, twitter:title (shared across platforms unless overridden)
-- `description` -> og:description, twitter:description
-- `image` -> og:image, twitter:image
+- `title` to og:title and twitter:title
+- `description` to og:description and twitter:description
+- `image` to og:image and twitter:image (1200 by 630 works everywhere)
 
-For platform-specific overrides, users should use the Pixelesq dashboard's SEO & Social panel, which provides per-platform editing with live previews for Google, Twitter, Facebook, LinkedIn, and Instagram.
-
-### Image sizing strategy
-
-If only one image is used across all platforms:
-- **1200x630px** works well for Twitter, Facebook, and LinkedIn
-- Test cropping for Instagram (center-crop safe zone)
-- Minimum recommended: 1200x630px, JPEG or PNG, under 5MB
-- Include alt text for accessibility and SEO
+Per-platform overrides are edited in the dashboard's SEO and social panel, which previews Google, Twitter, Facebook, LinkedIn and Instagram; there is no per-platform field on the MCP. If only one image is used, keep the subject centered so square and wide crops both work, and always set alt text on the image asset.

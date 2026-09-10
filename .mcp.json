@@ -1,7 +1,8 @@
 {
 	"mcpServers": {
 		"pixelesq": {
-			"url": "https://pixelesq-mcp.pixelesq.workers.dev/mcp"
+			"type": "http",
+			"url": "https://mcp.pixelesq.app/mcp"
 		}
 	}
 }

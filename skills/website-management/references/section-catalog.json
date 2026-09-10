@@ -1,0 +1,2924 @@
+{
+	"generatedAt": "2026-09-10",
+	"source": "list_section_types",
+	"count": 96,
+	"sections": [
+		{
+			"type": "ArticleWithSidebar",
+			"title": "Article With Sidebar",
+			"group": "content",
+			"summary": "Article layout with sticky sidebar containing TOC, share buttons, and configurable cards.",
+			"uses": [
+				"Blog articles with table of contents",
+				"Long-form content with sidebar CTAs",
+				"Articles with social sharing",
+				"Editorial content with sidebar navigation"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "ArticleWithToc",
+			"title": "Article With Toc",
+			"group": "content",
+			"summary": "Article display with automatic table of contents sidebar.",
+			"uses": [
+				"Documentation pages",
+				"Long-form articles",
+				"Tutorial content with multiple sections",
+				"Knowledge base articles"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"card"
+			]
+		},
+		{
+			"type": "Banner",
+			"title": "Banner",
+			"group": "cta",
+			"summary": "Banner section highlighting a call-to-action message with bold text and button.",
+			"uses": [
+				"Prominent call-to-action section on a page",
+				"Sign-up or promotional banner",
+				"Drawing attention to a limited-time offer or important link"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas"
+			],
+			"configFields": [
+				"section",
+				"textsBox"
+			]
+		},
+		{
+			"type": "BentoCards",
+			"title": "Bento Cards",
+			"group": "content",
+			"summary": "Structured grid of uniform cards for displaying feature highlights or product overviews.",
+			"uses": [
+				"Showing multiple features or products evenly",
+				"Overview of offerings with consistent cards",
+				"Organized feature grid on landing pages"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "BentoGallery",
+			"title": "Bento Gallery",
+			"group": "content",
+			"summary": "Media-first bento gallery with hover text overlays.",
+			"uses": [
+				"Photo gallery with hover captions",
+				"Portfolio showcase in bento layout",
+				"Product image gallery with descriptions on hover",
+				"Media-first content grid"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink",
+				"itemCarousel"
+			]
+		},
+		{
+			"type": "BlogHero",
+			"title": "Blog Hero",
+			"group": "hero",
+			"summary": "Blog page hero with a featured image and a brief content introduction.",
+			"uses": [
+				"Don't use this anywhere else, it's a hero section for blog pages only",
+				"Featured article or blog home introduction",
+				"Highlighting a top story with image and summary"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemMedia"
+			],
+			"configFields": [
+				"mediaBox",
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox"
+			]
+		},
+		{
+			"type": "CalendarView",
+			"title": "Calendar View",
+			"group": "content",
+			"summary": "Dated items on a calendar that visitors browse by month, by week or as an agenda, with a detail dialog per item.",
+			"uses": [
+				"Events page bound to an events collection with a Register CTA per event",
+				"Class or workshop schedule browsed by week",
+				"Release calendar, webinar series or deadline tracker on a product site"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"card",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard"
+			]
+		},
+		{
+			"type": "CardsWithIcons",
+			"title": "Cards With Icons",
+			"group": "features",
+			"summary": "Grid of cards highlighting key values or benefits, each with an icon and description.",
+			"uses": [
+				"Communicating core values or benefits with icons",
+				"Summarizing services or features in card format",
+				"Visual list of offerings or steps"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "CardWithMedia",
+			"title": "Card with Media",
+			"group": "content",
+			"summary": "Single content card combining an image or video with descriptive text.",
+			"uses": [
+				"Featuring a highlighted story or product in a card",
+				"Embedding a multimedia element (image/video) with text",
+				"Adding a standalone content highlight to a page"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox",
+				"card",
+				"cardLink"
+			]
+		},
+		{
+			"type": "CardWithMediaInset",
+			"title": "Card with Media Inset",
+			"group": "content",
+			"summary": "Single card featuring an inset image or video for a compact, balanced layout.",
+			"uses": [
+				"Displaying an image within a text-heavy card",
+				"Compact content highlights with embedded media",
+				"Combining text and media in one cohesive card"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox",
+				"card",
+				"cardLink"
+			]
+		},
+		{
+			"type": "ChangelogShowcase",
+			"title": "Changelog Showcase",
+			"group": "content",
+			"summary": "Editorial changelog timeline with a sticky date rail, sticky release media, and collapsible release sections.",
+			"uses": [
+				"Product changelog bound to a releases collection",
+				"Release notes with per-release media and collapsible detail sections",
+				"What’s new feeds with version badges, dates, and tags"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox"
+			]
+		},
+		{
+			"type": "CompareBars",
+			"title": "Compare Bars",
+			"group": "stats",
+			"summary": "Numbered outcome rows on one card, each with stacked comparison bars such as today versus with you.",
+			"uses": [
+				"Today versus with-us outcome comparisons on product and solution pages",
+				"Before and after results in case studies",
+				"Showing which of several options scores higher on each criterion"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"card",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "CompareTable",
+			"title": "Compare Table",
+			"group": "content",
+			"summary": "Editorial comparison table with written-out cells: a criterion column plus two or three option columns, winner marks allowed on either side, stacked criterion cards on mobile.",
+			"uses": [
+				"Compare your product against a competitor in written cells.",
+				"Publish honest vs pages where the other side wins some rows.",
+				"Lay out services, packages, or approaches side by side."
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "DocWithSidebar",
+			"title": "Doc With Sidebar",
+			"group": "content",
+			"summary": "Documentation page with a sidebar for navigation.",
+			"uses": [
+				"Documentation pages",
+				"Tutorial content with multiple sections",
+				"Knowledge base articles",
+				"Guides",
+				"Tutorials",
+				"How-to articles",
+				"Documentation pages",
+				"Long-form articles"
+			],
+			"contentFields": [
+				"logo",
+				"menu",
+				"ctas",
+				"menuItems",
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"logoBox",
+				"grid",
+				"itemsBox",
+				"itemCard",
+				"itemTextsBox",
+				"itemIconBox",
+				"mediaBox",
+				"itemMediaBox",
+				"items"
+			]
+		},
+		{
+			"type": "Faqs",
+			"title": "FAQs",
+			"group": "faqs",
+			"summary": "Standard FAQ section presenting common questions and answers in a list format.",
+			"uses": [
+				"Customer support or FAQ page content",
+				"Answering common user queries",
+				"Providing quick information through Q&A"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "FaqsInGrid",
+			"title": "Faqs In Grid",
+			"group": "faqs",
+			"summary": "FAQ section arranged in a grid layout for listing questions and answers.",
+			"uses": [
+				"FAQ pages with multiple questions side by side",
+				"Addressing common queries in a two-column layout",
+				"Showing Q&As in a compact grid"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "FaqsOnCard",
+			"title": "Faqs On Card",
+			"group": "faqs",
+			"summary": "FAQ section where each question and answer is presented on an individual card.",
+			"uses": [
+				"FAQ sections requiring emphasis on each Q&A",
+				"Separating each question and answer into cards",
+				"Making FAQs more visually distinct for readers"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"card",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "FaqsWithMedia",
+			"title": "FAQs With Media",
+			"group": "faqs",
+			"summary": "FAQ section that pairs each question and answer with an image or video for context.",
+			"uses": [
+				"Answering questions with diagrams or screenshots",
+				"FAQs where visuals aid understanding",
+				"Providing illustrative media for each FAQ item"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"mediaBox",
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "FeaturesCarousel",
+			"title": "Features Carousel",
+			"group": "features",
+			"summary": "Interactive feature showcase with auto-rotating media display and clickable items.",
+			"uses": [
+				"Showcasing product features with interactive media",
+				"Demonstrating multiple capabilities with visual examples",
+				"Creating engaging feature presentations with auto-play"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons",
+				"itemMedia"
+			],
+			"configFields": [
+				"mediaBox",
+				"itemsBox",
+				"grid",
+				"section",
+				"textsBox",
+				"itemTextsBox",
+				"itemIconBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "FeaturesInCard",
+			"title": "Features in a Card",
+			"group": "features",
+			"summary": "Feature grid inside one bordered container card, cells divided by hairlines, each with an icon, linked title, and description.",
+			"uses": [
+				"Feature overviews in a single divided container, Framer-style",
+				"Capability grids where each cell links to a detail page",
+				"Dense benefit lists with icons inside one bordered panel"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons"
+			],
+			"configFields": [
+				"card",
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "FeaturesInCardWithMedia",
+			"title": "Features in Card with Media",
+			"group": "features",
+			"summary": "One card holding a title block and icon rows beside a contained image or video that keeps its own radius.",
+			"uses": [
+				"Feature lists with an illustration on one framed card",
+				"Product capability blocks with a screenshot beside the points",
+				"Benefit rows that need a contained visual rather than a bleed"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons"
+			],
+			"configFields": [
+				"card",
+				"mediaBox",
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "FeaturesInCardWithMediaInset",
+			"title": "Features in Card with Media Inset",
+			"group": "features",
+			"summary": "One card holding a title block and icon rows beside an image or video that fills its side of the card edge to edge and full height.",
+			"uses": [
+				"Feature lists paired with one full-bleed photo on a single card",
+				"Product highlights that need a framed, self-contained block",
+				"Problem and solution cards with an atmospheric image"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons"
+			],
+			"configFields": [
+				"card",
+				"mediaBox",
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "FeaturesInlineIcons",
+			"title": "Features Inline Icons",
+			"group": "features",
+			"summary": "Feature grid where each icon sits inline with its title on the same line.",
+			"uses": [
+				"Listing product features with compact inline icons",
+				"Summarizing capabilities in a scannable grid",
+				"Highlighting benefits without large icon artwork"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "FeaturesOffset",
+			"title": "Features Offset",
+			"group": "features",
+			"summary": "Feature section with an offset layout that alternates text and visuals.",
+			"uses": [
+				"Highlighting product features with alternating text and images",
+				"Making feature lists more engaging visually",
+				"Alternating layout sections on landing pages"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "FeaturesWithImage",
+			"title": "Features with Image",
+			"group": "features",
+			"summary": "Feature section combining a main image with icon-highlighted key points.",
+			"uses": [
+				"Introducing product features with a large image and icons",
+				"Combining an illustrative image with a feature list",
+				"Highlighting benefits with both text and visuals"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons",
+				"itemMedia"
+			],
+			"configFields": [
+				"mediaBox",
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "FeaturesWithMediaInset",
+			"title": "Features with Media Inset",
+			"group": "features",
+			"summary": "Split feature section where one image or video fills its side of the section edge to edge and full height while the title block and icon rows stay inside the container.",
+			"uses": [
+				"Pairing a list of benefits with one full-bleed photo",
+				"Problem and solution sections with an atmospheric image",
+				"Feature lists that need a stronger visual than an inset image"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons"
+			],
+			"configFields": [
+				"mediaBox",
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "FooterMasonryMenu",
+			"title": "Footer Masonry Menu",
+			"group": "footer",
+			"summary": "Large footer with link groups flowing through masonry columns, logo on the left and social plus legal on the bottom bar.",
+			"uses": [
+				"Link-heavy footers with many uneven menu groups",
+				"Product sites pairing it with a mega menu header",
+				"Footers needing social icons and legal links on a bottom bar"
+			],
+			"contentFields": [
+				"logo",
+				"menu",
+				"social",
+				"legal",
+				"menuItems"
+			],
+			"configFields": [
+				"section",
+				"logoBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "FooterOnCard",
+			"title": "Footer On Card",
+			"group": "footer",
+			"summary": "Footer on a rounded card: masonry link groups, logo and bottom bar all sit on one floating surface.",
+			"uses": [
+				"Floating card footers over page or gradient backgrounds",
+				"Link-heavy footers with many uneven menu groups",
+				"Pairing with Header On Card for a matching framed look"
+			],
+			"contentFields": [
+				"logo",
+				"menu",
+				"social",
+				"legal",
+				"menuItems"
+			],
+			"configFields": [
+				"section",
+				"card",
+				"logoBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "FooterWithMenu",
+			"title": "Footer With Menu",
+			"group": "footer",
+			"summary": "Footer section with multi-column menus and extended site information for navigation.",
+			"uses": [
+				"Websites with many pages needing footer navigation",
+				"Multi-column footer menus for large sites",
+				"Providing contact and legal info in the footer"
+			],
+			"contentFields": [
+				"logo",
+				"menu",
+				"social",
+				"legal",
+				"menuItems"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"logoBox",
+				"grid",
+				"itemsBox",
+				"itemCard",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "GlossaryAlphaNav",
+			"title": "Glossary with Alpha Nav",
+			"group": "content",
+			"summary": "Alphabetical directory with sticky A-Z navigation, search filter, and grouped items.",
+			"uses": [
+				"Browsable glossary or terminology directory",
+				"Service or product catalog with alphabetical navigation",
+				"Medical conditions, diagnoses, or treatment directory",
+				"Alphabetical team or member directory"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox",
+				"itemMediaBox",
+				"itemCard"
+			]
+		},
+		{
+			"type": "FormCardWithIcons",
+			"title": "Form Card With Icons",
+			"group": "form",
+			"summary": "Form inside a distinct card, with icon-led supporting points beside it.",
+			"uses": [
+				"Contact or demo forms with icon-led selling points beside them",
+				"Emphasizing form inputs with a card layout",
+				"Combining icon bullets with a prominent form side-by-side"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"form",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons",
+				"form"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"formBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox",
+				"card"
+			]
+		},
+		{
+			"type": "FormInCard",
+			"title": "Form In Card",
+			"group": "form",
+			"summary": "Form section with input fields placed inside a distinct card alongside supporting text.",
+			"uses": [
+				"Embedding a sign-up or contact form within a content section",
+				"Emphasizing form inputs with a card layout",
+				"Combining text content with a prominent form side-by-side"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"form",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia",
+				"form"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"formBox",
+				"card",
+				"mediaBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox"
+			]
+		},
+		{
+			"type": "FormWithIcons",
+			"title": "Form With Icons",
+			"group": "form",
+			"summary": "Plain form with the section heading on top and icon-led points beside the fields, no card.",
+			"uses": [
+				"Lightweight contact or signup forms without card chrome",
+				"Icon bullets reassuring visitors right beside the fields",
+				"Sections where the form should blend into the page background"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"form",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons",
+				"form"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"formBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "HeaderOnCard",
+			"title": "Header On Card",
+			"group": "header",
+			"summary": "Floating card header: the nav sits in a rounded card over the hero and the card itself morphs open to hold the mega menu.",
+			"uses": [
+				"Floating card nav over gradient or media heroes",
+				"Morphing mega menu inside one continuous card",
+				"Marketing sites with deep product, solution and resource pages"
+			],
+			"contentFields": [
+				"logo",
+				"menu",
+				"ctas",
+				"menuItems",
+				"menuGroups",
+				"menuCtas",
+				"itemTitle",
+				"itemSubtitle",
+				"itemDesc",
+				"itemIcons",
+				"itemMedia",
+				"itemCtas",
+				"itemUrl"
+			],
+			"configFields": [
+				"card",
+				"section",
+				"textsBox",
+				"logoBox",
+				"grid",
+				"itemsBox",
+				"itemCard",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "HeaderMaxMenu",
+			"title": "Header Max Menu",
+			"group": "header",
+			"summary": "Global header with a full-width mega menu: grouped link columns, featured media cards and panel CTAs.",
+			"uses": [
+				"Full-width mega menu with grouped navigation columns",
+				"Featured media or article cards inside the menu",
+				"Marketing sites with many product, solution and resource pages"
+			],
+			"contentFields": [
+				"logo",
+				"menu",
+				"ctas",
+				"menuItems",
+				"menuGroups",
+				"menuCtas",
+				"itemTitle",
+				"itemSubtitle",
+				"itemDesc",
+				"itemIcons",
+				"itemMedia",
+				"itemCtas",
+				"itemUrl"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"logoBox",
+				"grid",
+				"itemsBox",
+				"itemCard",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "HeaderSplitMenu",
+			"title": "Header Split Menu",
+			"group": "header",
+			"summary": "Global header with a split mega menu: a left rail of sections that swaps a rich detail pane, OpenText style.",
+			"uses": [
+				"Drill-down mega menu for deep product catalogs",
+				"Sectioned navigation with rich detail panes per section",
+				"Marketing sites with many product, solution and resource pages"
+			],
+			"contentFields": [
+				"logo",
+				"menu",
+				"ctas",
+				"menuItems",
+				"menuGroups",
+				"menuCtas",
+				"itemTitle",
+				"itemSubtitle",
+				"itemDesc",
+				"itemIcons",
+				"itemMedia",
+				"itemCtas",
+				"itemUrl"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"logoBox",
+				"grid",
+				"itemsBox",
+				"itemCard",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "HeaderWithMenu",
+			"title": "Header With Menu",
+			"group": "header",
+			"summary": "Website header with logo and an expanded navigation menu for easy site browsing.",
+			"uses": [
+				"Top navigation bar with multiple menu links",
+				"Header for sites with many sections",
+				"Providing an easy site-wide navigation menu"
+			],
+			"contentFields": [
+				"logo",
+				"menu",
+				"ctas",
+				"menuItems"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"logoBox",
+				"grid",
+				"itemsBox",
+				"itemCard",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "HeroCard",
+			"title": "Hero Card",
+			"group": "hero",
+			"summary": "Hero section with an overlay card highlighting a key message or call-to-action.",
+			"uses": [
+				"Highlighting a primary call-to-action on the homepage",
+				"Featuring a special offer or announcement prominently",
+				"Drawing attention to key info in an intro section"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox",
+				"card",
+				"cardLink"
+			]
+		},
+		{
+			"type": "HowItWorks",
+			"title": "How It Works",
+			"group": "content",
+			"summary": "Numbered steps with a connecting line for process or how-it-works sections.",
+			"uses": [
+				"Explaining a process or workflow",
+				"How-it-works or onboarding steps",
+				"Numbered lists with visual flow"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "HowItWorksMedia",
+			"title": "How It Works (with Media)",
+			"group": "content",
+			"summary": "Numbered steps with connecting line and configurable media per step.",
+			"uses": [
+				"Process or how-it-works with visuals per step",
+				"Onboarding with media and text",
+				"Numbered steps with configurable media layout"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox"
+			]
+		},
+		{
+			"type": "HeroMediaBgCard",
+			"title": "Hero Media Bg Card",
+			"group": "hero",
+			"summary": "Hero section with a single card featuring a media background, icon, and text content.",
+			"uses": [
+				"Highlighting a primary message with visual impact",
+				"Creating a focal hero section with media background",
+				"Showcasing key features or benefits prominently"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"icons",
+				"media"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox",
+				"card",
+				"cardLink",
+				"iconBox"
+			]
+		},
+		{
+			"type": "HeroRollingMedia",
+			"title": "Hero Rolling Media",
+			"group": "hero",
+			"summary": "Hero whose headline rolls through words while the image changes with each one.",
+			"uses": [
+				"Headlines that rotate through personas, each with its own visual",
+				"Product heroes that show a different screen per use case",
+				"Landing pages that pair every benefit with a matching image"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemTitle",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "HeroRollingWords",
+			"title": "Hero Rolling Words",
+			"group": "hero",
+			"summary": "Hero whose headline keeps rolling through a set of words, beside one image.",
+			"uses": [
+				"One headline that speaks to several audiences or use cases",
+				"Landing pages that rotate through benefits, verticals or personas",
+				"A single product image next to a living headline"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media",
+				"items",
+				"itemTitle"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "HeroSocialProof",
+			"title": "Hero Social Proof",
+			"group": "hero",
+			"summary": "Hero with an overlapping avatar stack and a trust line as social proof under the message.",
+			"uses": [
+				"SaaS landing pages leading with user credibility",
+				"Product heroes backed by a happy-customer avatar wall",
+				"Launch pages pairing a pitch with adoption proof"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media",
+				"items",
+				"itemTitle",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox",
+				"itemsBox",
+				"itemMediaBox"
+			]
+		},
+		{
+			"type": "HeroWithInputField",
+			"title": "Hero with Input Field",
+			"group": "hero",
+			"summary": "Hero section with inline email/text input and CTA button for lead capture.",
+			"uses": [
+				"Newsletter signup with email prefill",
+				"Demo request lead capture",
+				"Early access or waitlist signups"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media",
+				"inlineField"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox"
+			]
+		},
+		{
+			"type": "HeroWithMediaBg",
+			"title": "Hero with Media Bg",
+			"group": "hero",
+			"summary": "Hero section with full-width media (image or video) as the background.",
+			"uses": [
+				"Creating immersive landing page headers",
+				"Showcasing cinematic video backgrounds",
+				"Building visually striking hero sections with full-bleed media"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox"
+			]
+		},
+		{
+			"type": "HeroWithMedia",
+			"title": "Hero with Media",
+			"group": "hero",
+			"summary": "Hero section featuring a prominent image or video alongside the main headline.",
+			"uses": [
+				"Adding a striking image or video to a hero",
+				"Marketing landing pages that need visual impact",
+				"Presenting a headline alongside supporting visuals"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox"
+			]
+		},
+		{
+			"type": "HeroWithMediaBelow",
+			"title": "Hero with Media Below",
+			"group": "hero",
+			"summary": "Hero section with an image or video positioned below the main headline.",
+			"uses": [
+				"Introducing a page with a headline followed by an image",
+				"Showcasing a hero message with supporting visual beneath",
+				"When you have a large image to display under a title"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox"
+			]
+		},
+		{
+			"type": "HeroWithMediaInset",
+			"title": "Hero with Media Inset",
+			"group": "hero",
+			"summary": "Hero section with an inset image or video for a striking impression.",
+			"uses": [
+				"Making a strong first impression with integrated visuals",
+				"Combining text and imagery in a hero seamlessly",
+				"Dramatic page introductions with embedded media"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox"
+			]
+		},
+		{
+			"type": "HeroWithMediaItems",
+			"title": "Hero With Media Items",
+			"group": "hero",
+			"summary": "Hero section featuring multiple images or videos in an interactive carousel.",
+			"uses": [
+				"Showcasing a product or service with multiple visuals",
+				"Engaging visitors with an image or video carousel",
+				"Highlighting various features in the hero area"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"mediaBox",
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox"
+			]
+		},
+		{
+			"type": "HeroWithStats",
+			"title": "Hero With Stats",
+			"group": "hero",
+			"summary": "Hero pairing a content block and stat row with a single image beside it.",
+			"uses": [
+				"Landing pages that lead with numbers as social proof",
+				"Product or service intros backed by key metrics",
+				"Guide and resource pages pairing a pitch with results"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc"
+			],
+			"configFields": [
+				"mediaBox",
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "HeroWithPrompt",
+			"title": "Hero with Prompt",
+			"group": "hero",
+			"summary": "AI chat-style hero section with large textarea, animated placeholder suggestions, and submit action.",
+			"uses": [
+				"AI product landing pages with prompt-to-action flow",
+				"Chat-based application entry points",
+				"Creative tools where users describe what they want to build"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"promptArea"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"formBox",
+				"card"
+			]
+		},
+		{
+			"type": "IconFeatures",
+			"title": "Icon Features",
+			"group": "features",
+			"summary": "Feature section highlighting key points with representative icons for each item.",
+			"uses": [
+				"Listing product features with icons",
+				"Summarizing services using icon illustrations",
+				"Providing a quick visual feature overview"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "ItineraryCards",
+			"title": "Itinerary Cards",
+			"group": "features",
+			"summary": "Cards displaying flight itinerary information with pricing and route details.",
+			"uses": [
+				"Displaying flight booking options",
+				"Showing travel itinerary details",
+				"Presenting pricing comparisons for flights"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "JustStats",
+			"title": "Just Stats",
+			"group": "stats",
+			"summary": "Section focusing on key statistics or metrics with prominent numeric displays.",
+			"uses": [
+				"Showcasing key stats at a glance (user count, sales, etc.)",
+				"Quickly presenting metrics with big numbers",
+				"Highlighting important numbers to build credibility"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "RollingStats",
+			"title": "Rolling Stats",
+			"group": "stats",
+			"summary": "Stats section where every digit rolls odometer-style to its value as it scrolls into view.",
+			"uses": [
+				"Key metrics that land with motion (users, revenue, uptime)",
+				"Credibility numbers that draw the eye as visitors scroll",
+				"Stat rows identical to Just Stats but with rolling digits"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "LogoGrid",
+			"title": "Logo Grid",
+			"group": "logos",
+			"summary": "Grid layout displaying multiple logos in an organized arrangement.",
+			"uses": [
+				"Displaying partner or client logos at a glance",
+				"Showing sponsor logos in a structured grid",
+				"Building trust by presenting brand affiliations"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox"
+			]
+		},
+		{
+			"type": "LogosInCard",
+			"title": "Logos in Card",
+			"group": "logos",
+			"summary": "Logo or image grid inside one bordered container card, cells divided by hairlines, each optionally linking out.",
+			"uses": [
+				"Logo walls and social proof strips inside one bordered panel",
+				"Comparison or integration grids where each logo links to its page",
+				"Tool and partner showcases with uniform media cells"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"card",
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "MediaBentoCards",
+			"title": "Media Bento Cards",
+			"group": "content",
+			"summary": "Asymmetric bento-style layout of media cards that becomes a carousel on mobile.",
+			"uses": [
+				"Feature highlights with varying visual weight",
+				"Product showcase with asymmetric bento layout",
+				"Content grid with adaptive mobile carousel",
+				"Media galleries with responsive layouts",
+				"Portfolio showcase with visual hierarchy"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink",
+				"itemCarousel"
+			]
+		},
+		{
+			"type": "MediaBgCards",
+			"title": "Media Bg Cards",
+			"group": "content",
+			"summary": "Grid of cards each with an image background and overlaid text content.",
+			"uses": [
+				"Highlighting multiple offerings with background images",
+				"Visual grid of content cards for a portfolio or services",
+				"Sections that need image-backed content blocks"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "MediaBgIconCards",
+			"title": "Media Bg Icon Cards",
+			"group": "content",
+			"summary": "Grid of cards with image backgrounds and icons for showcasing features or categories.",
+			"uses": [
+				"Displaying multiple features with pictures and icons",
+				"Category overview with visual icon cards",
+				"Feature grid with illustrated icon cards"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "MediaCards",
+			"title": "Media Cards",
+			"group": "content",
+			"summary": "Grid of cards featuring images or videos each with a brief description.",
+			"uses": [
+				"Portfolio gallery with image cards and captions",
+				"Displaying product images with descriptions",
+				"Media gallery section with brief explanations"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "MediaCardsInset",
+			"title": "Media Cards Inset",
+			"group": "content",
+			"summary": "Grid of cards featuring images or videos each with a brief description, inset media.",
+			"uses": [
+				"Portfolio gallery with image cards and captions, inset media",
+				"Displaying product images with descriptions, inset media",
+				"Media gallery section with brief explanations, inset media"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "MediaCardSlider",
+			"title": "Media Card Slider",
+			"group": "content",
+			"summary": "Carousel slider of media cards with images or videos and text captions.",
+			"uses": [
+				"Carousel of project images or product shots",
+				"Interactive gallery for multiple media items",
+				"Sliding showcase of testimonials or case studies"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "MediaCarousel",
+			"title": "Media Carousel",
+			"group": "testimonials",
+			"summary": "Draggable carousel of portrait media cards that auto-play videos on hover with mute/unmute controls.",
+			"uses": [
+				"Video testimonials from customers or team members",
+				"Portrait video stories or reels showcase",
+				"Interactive media gallery with hover-to-play",
+				"Portrait image carousel with text overlays"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard"
+			]
+		},
+		{
+			"type": "MediaGridAlt",
+			"title": "Media Grid Alt",
+			"group": "content",
+			"summary": "Image gallery grid with an alternative staggered layout for visual storytelling.",
+			"uses": [
+				"Creative gallery layouts beyond a standard grid",
+				"Storytelling with staggered images and text",
+				"Showcasing portfolio pieces in a dynamic layout"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox"
+			]
+		},
+		{
+			"type": "MediaGridIconCards",
+			"title": "Media Grid Icon Cards",
+			"group": "content",
+			"summary": "Responsive card grid with image backgrounds and icons, alternating large and small cards.",
+			"uses": [
+				"Visually dynamic feature or portfolio sections",
+				"Highlighting multiple items with mixed-size cards",
+				"Engaging grid for showcasing a variety of content"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "MediaGridTrio",
+			"title": "Media Grid Trio",
+			"group": "content",
+			"summary": "Media section showcasing three images or videos side by side in a trio layout.",
+			"uses": [
+				"Comparing three features or options side by side",
+				"Showcasing a trio of related products or images",
+				"Presenting three key highlights in one view"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox"
+			]
+		},
+		{
+			"type": "MediaInCard",
+			"title": "Media in Card",
+			"group": "features",
+			"summary": "Showcase grid inside one bordered container card: large media floating above a bottom-pinned title and description in each hairline-divided cell.",
+			"uses": [
+				"Illustration-led feature showcases in a single divided container",
+				"Product capability grids where each visual links to a detail page",
+				"Linear-style highlight walls with large media and short captions"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"card",
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "MediaSliderExtended",
+			"title": "Media Slider Extended",
+			"group": "content",
+			"summary": "Media slider with full-bleed images spanning edge-to-edge for a dramatic effect.",
+			"uses": [
+				"Displaying a full-width image carousel",
+				"Immersive gallery with edge-to-edge slides",
+				"High-impact visual showcase on landing pages"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "MovingLogos",
+			"title": "Moving Logos",
+			"group": "logos",
+			"summary": "Animated logo showcase section with continuously moving or rotating logos.",
+			"uses": [
+				"Presenting a rotating display of partner logos",
+				"Showcasing client or sponsor logos dynamically",
+				"Highlighting brand partners in a visual carousel"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "MovingTexts",
+			"title": "Moving Texts",
+			"group": "logos",
+			"summary": "Infinite text marquee: brand or team names scroll continuously with soft fades at the container edges.",
+			"uses": [
+				"Where-we-come-from strips of past employers or investors",
+				"Client or integration names without logo assets",
+				"Continuous ticker of markets, cities or categories"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemTitle",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "PqPricing",
+			"title": "Pq Pricing",
+			"group": "form",
+			"summary": "Pricing cards with monthly/annual toggle, animated price transitions, and configurable tiers.",
+			"uses": [
+				"Display pricing tiers with animated billing toggle.",
+				"Highlight a recommended tier with solid CTA variant.",
+				"Show feature lists per tier using the description field."
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemCard"
+			]
+		},
+		{
+			"type": "PqPricingTable",
+			"title": "Pq Pricing Table",
+			"group": "form",
+			"summary": "Feature comparison table with a sticky tier header, featured-column band, and quiet check/cross marks; collapses to a plan switcher on mobile.",
+			"uses": [
+				"Compare features across pricing tiers in a structured table.",
+				"Highlight a popular tier column using CTA variant.",
+				"Show tooltips for feature descriptions."
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "SectionDivider",
+			"title": "Section Divider",
+			"group": "header",
+			"summary": "A horizontal separator line between sections, with optional title text placed on the line.",
+			"uses": [
+				"Separating content sections visually",
+				"Adding a labeled divider between form steps",
+				"Creating an \"or\" separator between options"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"card"
+			]
+		},
+		{
+			"type": "SimpleCard",
+			"title": "Simple Card",
+			"group": "cta",
+			"summary": "Minimal call-to-action card with a short message and a prominent button.",
+			"uses": [
+				"Promoting a single offer or action on a page",
+				"Simple sign-up or conversion prompts",
+				"Highlighting one message with a call-to-action button"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"card",
+				"cardLink"
+			]
+		},
+		{
+			"type": "SimpleFooter",
+			"title": "Simple Footer",
+			"group": "footer",
+			"summary": "Minimalist website footer with basic links, social icons, and copyright info.",
+			"uses": [
+				"Basic website footer with minimal content",
+				"Displaying essential info at the bottom of pages",
+				"Adding social links and copyright without clutter"
+			],
+			"contentFields": [
+				"logo",
+				"menu",
+				"social",
+				"legal"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"logoBox",
+				"grid",
+				"itemsBox",
+				"itemCard",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "SimpleForm",
+			"title": "Simple Form",
+			"group": "form",
+			"summary": "Basic form section for capturing user input with minimal distractions.",
+			"uses": [
+				"Contact us forms on a page",
+				"Newsletter signup or simple input forms",
+				"Basic feedback or inquiry sections"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"form"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"formBox"
+			]
+		},
+		{
+			"type": "SimpleHeader",
+			"title": "Simple Header",
+			"group": "header",
+			"summary": "Minimalistic site header featuring only the essential logo and navigation links.",
+			"uses": [
+				"Basic website header with logo and nav",
+				"Clean top navigation for minimal design",
+				"Simple site branding without extra elements"
+			],
+			"contentFields": [
+				"logo",
+				"menu",
+				"ctas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"logoBox",
+				"grid",
+				"itemsBox",
+				"itemCard",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "SimpleHero",
+			"title": "Simple Hero",
+			"group": "hero",
+			"summary": "Hero section introducing main content with a clear, focused message.",
+			"uses": [
+				"Landing page or homepage introduction",
+				"Focusing user attention on a primary message",
+				"Quickly engaging users upon site entry"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas"
+			],
+			"configFields": [
+				"section",
+				"textsBox"
+			]
+		},
+		{
+			"type": "SimpleMedia",
+			"title": "Simple Media",
+			"group": "content",
+			"summary": "Section featuring a single prominent image or video with supporting text.",
+			"uses": [
+				"Showcasing one highlight image or video with text",
+				"Featuring a product shot or video with a caption",
+				"Single media highlight section on a page"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox"
+			]
+		},
+		{
+			"type": "SimpleMediaGrid",
+			"title": "Simple Media Grid",
+			"group": "content",
+			"summary": "Simple grid layout to display images or videos in an organized manner.",
+			"uses": [
+				"Photo gallery sections on a webpage",
+				"Simple video gallery without descriptions",
+				"Displaying a collection of images without text"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox"
+			]
+		},
+		{
+			"type": "StatsOnCard",
+			"title": "Stats On Card",
+			"group": "stats",
+			"summary": "Statistics section with each key metric displayed on its own card.",
+			"uses": [
+				"Emphasizing several metrics individually",
+				"Presenting stats in a card-based layout",
+				"Key numbers in separate highlight boxes"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"card",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		},
+		{
+			"type": "StickyFeatures",
+			"title": "Sticky Features",
+			"group": "features",
+			"summary": "Split layout with scrolling text and sticky cross-fading media for feature showcases.",
+			"uses": [
+				"Product feature walkthroughs with fixed media",
+				"Split-screen storytelling with cross-fading images",
+				"Scroll-driven feature reveals with sticky media"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"mediaBox",
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox"
+			]
+		},
+		{
+			"type": "StickyFeaturesCard",
+			"title": "Sticky Features Card",
+			"group": "features",
+			"summary": "Stacking card deck where each card sticks and gets covered by the next as you scroll.",
+			"uses": [
+				"Product feature showcases with stacking card animations",
+				"Scroll-driven feature reveals with card layering",
+				"Engaging product walkthrough sections"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "StickyFeaturesCardInset",
+			"title": "Sticky Features Card Inset",
+			"group": "features",
+			"summary": "Stacking card deck with edge-to-edge inset media where each card sticks and gets covered by the next.",
+			"uses": [
+				"Product feature showcases with stacking inset-media cards",
+				"Scroll-driven feature reveals with edge-to-edge imagery",
+				"Engaging product walkthrough sections"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "Testimonial",
+			"title": "Testimonial",
+			"group": "testimonials",
+			"summary": "Section for a single customer testimonial or quote to build trust.",
+			"uses": [
+				"Highlighting a single customer review on a page",
+				"Adding a standalone testimonial for credibility",
+				"Featuring one significant quote as social proof"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"media"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"mediaBox"
+			]
+		},
+		{
+			"type": "TestimonialBrandTabs",
+			"title": "Testimonial Brand Tabs",
+			"group": "testimonials",
+			"summary": "Single testimonial card with a brand logo tab strip to switch between customer quotes.",
+			"uses": [
+				"Rotating customer quotes behind recognizable brand logos",
+				"Social proof sections focused on one strong quote at a time",
+				"Case-study style testimonials switched by company"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "TestimonialCardSlider",
+			"title": "Testimonial Card Slider",
+			"group": "testimonials",
+			"summary": "Slider of testimonial cards cycling through customer quotes and reviews.",
+			"uses": [
+				"Showing many customer testimonials in a slider",
+				"Saving space by cycling through feedback",
+				"Interactive testimonials section with multiple quotes"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "TestimonialGrid",
+			"title": "Testimonial Grid",
+			"group": "testimonials",
+			"summary": "Masonry grid layout of testimonial cards with responsive column configuration.",
+			"uses": [
+				"Showcasing multiple testimonials in masonry layout",
+				"Creating visually appealing testimonial sections",
+				"Responsive testimonial grids that adapt to content length",
+				"Social proof sections with dynamic card heights"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "TestimonialSlider",
+			"title": "Testimonial Slider",
+			"group": "testimonials",
+			"summary": "Rotating carousel of multiple customer testimonials to showcase various feedback.",
+			"uses": [
+				"Featuring multiple testimonials in a rotating banner",
+				"Continuous loop of customer quotes and reviews",
+				"Showing many reviews in limited space"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox"
+			]
+		},
+		{
+			"type": "TestimonialsWithLogos",
+			"title": "Testimonials With Logos",
+			"group": "testimonials",
+			"summary": "Testimonial section showcasing customer quotes alongside their company logos.",
+			"uses": [
+				"Highlighting client testimonials with brand logos",
+				"Showing customer feedback along with company branding",
+				"Building trust by linking quotes to recognizable logos"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox",
+				"itemCard"
+			]
+		},
+		{
+			"type": "TabbedBenchmark",
+			"title": "Tabbed Benchmark",
+			"group": "stats",
+			"summary": "Tabbed horizontal bar chart for benchmark comparisons with animated progress bars.",
+			"uses": [
+				"Displaying benchmark comparisons across categories",
+				"Showcasing product performance metrics",
+				"Interactive stats or leaderboard presentations"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox",
+				"itemIconBox"
+			]
+		},
+		{
+			"type": "TabbedFeaturePanel",
+			"title": "Tabbed Feature Panel",
+			"group": "features",
+			"summary": "Chip tabs switching one feature panel: eyebrow and title top left, description anchored to the bottom, media beside them in a shared card.",
+			"uses": [
+				"Interactive product feature tabs with one large showcase panel",
+				"Use-case walkthroughs where each tab swaps title, copy, and media",
+				"Homepage capability switchers in the Attio and Linear style"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemMedia"
+			],
+			"configFields": [
+				"card",
+				"cardLink",
+				"section",
+				"textsBox",
+				"itemsBox",
+				"itemTextsBox",
+				"itemMediaBox"
+			]
+		},
+		{
+			"type": "TabbedShowcase",
+			"title": "Tabbed Showcase",
+			"group": "features",
+			"summary": "Tabbed feature showcase with animated media transitions and responsive tab bar.",
+			"uses": [
+				"Showcasing multiple product features with visual demos",
+				"Tabbed interface for capability walkthroughs",
+				"Interactive feature presentations with media transitions"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas",
+				"itemIcons",
+				"itemMedia"
+			],
+			"configFields": [
+				"itemsBox",
+				"grid",
+				"section",
+				"textsBox",
+				"itemTextsBox",
+				"itemIconBox",
+				"itemMediaBox",
+				"itemCard",
+				"itemCardLink"
+			]
+		},
+		{
+			"type": "TextGrid",
+			"title": "Text Grid",
+			"group": "content",
+			"summary": "Grid of text blocks for presenting information or content in a clear layout.",
+			"uses": [
+				"Listing multiple text items (features, FAQs) in columns",
+				"Displaying content like services without images",
+				"Organizing text-heavy content into a grid"
+			],
+			"contentFields": [
+				"subtitle",
+				"title",
+				"desc",
+				"ctas",
+				"items",
+				"itemSubtitle",
+				"itemTitle",
+				"itemDesc",
+				"itemCtas"
+			],
+			"configFields": [
+				"section",
+				"textsBox",
+				"grid",
+				"itemsBox",
+				"itemTextsBox"
+			]
+		}
+	]
+}

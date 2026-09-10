@@ -1,121 +1,51 @@
-# Site Architecture Recipes
+# Site architecture recipes
 
-## Contents
+Section names below are live types from `section-guide.md`. Collection field types are the ones `update_collection_schema` accepts (`text`, `html`, `number`, `boolean`, `date`, `media`, `option`, `reference`).
 
-- SaaS product site
-- Portfolio / agency site
-- Local business site
-- Blog / publication site
-- E-commerce storefront
+## SaaS product site
 
-## SaaS Product Site
+**Pages:** Home (hero with product visual, logos, features, how it works, stats, testimonials, pricing preview, FAQ, banner), Features (`StickyFeatures` or `TabbedFeaturePanel`), Pricing (`PqPricing` or `PqPricingTable`, `CompareTable`, `Faqs`), Changelog (`ChangelogShowcase`), About, Contact (`SimpleForm` or `FormInCard`), Blog listing (`BlogHero` plus a collection-bound `MediaCards`).
 
-### Pages
-- **Homepage** -- hero with product demo, features, social proof, pricing preview, CTA
-- **Features** -- detailed feature breakdown with StickyFeatures or FeaturesWithImage
-- **Pricing** -- PqPricing or PqPricingTable with FAQ
-- **About** -- team, mission, story
-- **Contact** -- SimpleForm or FormInCard
-- **Blog** (listing page) -- BlogHero with collection entries
+**Collections:** Blog (`hasPages: true`): title (text), excerpt (html), cover_image (media), category (text), published_date (text or date), author (text), author_image (media), content (html). Changelog entries if release notes are frequent.
 
-### Collections
-- **Blog** (`hasPages: true`) -- fields: title (text), content (html), excerpt (text), author (text), featured_image (image), published_date (date), category (text)
+**Home order:** `HeroWithMedia` or `HeroSocialProof`, `MovingLogos`, `StickyFeatures`, `HowItWorks`, `StatsOnCard`, `TestimonialBrandTabs` or `TestimonialSlider`, `PqPricing`, `Faqs`, `Banner`.
 
-### Partials
-- Header with logo, nav links (Features, Pricing, Blog), and CTA button
-- Footer with sitemap links, social icons, legal links
+## Portfolio or agency
 
-### Key sections
-Homepage: HeroWithMedia -> MovingLogos -> StickyFeatures -> StatsOnCard -> TestimonialSlider -> PqPricing -> Faqs -> Banner
+**Pages:** Home, Work (`MediaBentoCards` or `BentoGallery`, bound to Case Studies), Services (`IconFeatures` or `FeaturesOffset`), About (team grid), Contact.
 
----
+**Collections:** Case Studies (`hasPages: true`): title (text), client (text), content (html), hero_image (media), results (text), category (text), featured (boolean). Team (`hasPages: false`): name (text), role (text), bio (html), photo (media), linkedin (text).
 
-## Portfolio / Agency Site
+**Home order:** `HeroWithMediaBg`, `MediaBentoCards`, `RollingStats`, `TestimonialsWithLogos`, `Banner`.
 
-### Pages
-- **Homepage** -- hero with headline, work showcase grid, client logos, CTA
-- **Work/Portfolio** (listing) -- MediaBentoCards or MediaGridAlt
-- **Services** -- IconFeatures or FeaturesOffset with detailed descriptions
-- **About** -- team bios, values, story
-- **Contact** -- SimpleForm
+## Local business
 
-### Collections
-- **Case Studies** (`hasPages: true`) -- fields: title (text), client (text), content (html), hero_image (image), results (text), category (text), featured (boolean)
-- **Team Members** (`hasPages: false`) -- fields: name (text), role (text), bio (html), photo (image), linkedin (text)
+**Pages:** Home, Services (one page each or a bound listing), About, Contact (`FormInCard` with address and hours).
 
-### Partials
-- Minimal header with wordmark and nav
-- Footer with contact info, social links
+**Collections:** Services (`hasPages: true`): name (text), description (html), image (media), price_range (text), duration (text). Testimonials (`hasPages: false`): name (text), content (text), rating (number), date (date).
 
-### Key sections
-Homepage: HeroWithMediaBg -> MediaBentoCards -> StatsOnCard -> TestimonialsWithLogos -> Banner
+**Home order:** `HeroWithMedia`, `IconFeatures`, `TestimonialGrid`, `JustStats`, `FaqsWithMedia`, `FormInCard`. SEO: `LocalBusiness` JSON-LD on the home page, titles of the form "[Service] in [City] | [Business]", Search Console connected.
 
----
+## Blog or publication
 
-## Local Business Site
+**Pages:** Home (`BlogHero`, collection-bound `MediaCards`, `FormInCard` for the newsletter), category pages, About, Subscribe.
 
-### Pages
-- **Homepage** -- hero with location/service focus, services overview, testimonials, contact form, map
-- **Services** (one page per service, or a single listing) -- FeaturesWithImage
-- **About** -- story, team, values
-- **Contact** -- FormInCard with location details
+**Collections:** Articles (`hasPages: true`): title (text), content (html), excerpt (html), author (reference to Authors), featured_image (media), published_date (date), category (reference to Categories), tags (text, list), read_time (number). Authors (`hasPages: true`): name, bio (html), avatar (media), role. Categories (`hasPages: false`): name, description, slug.
 
-### Collections
-- **Services** (`hasPages: true`) -- fields: name (text), description (html), image (image), price_range (text), duration (text)
-- **Testimonials** (`hasPages: false`) -- fields: name (text), content (text), rating (number), date (date)
+**Article layout:** `BlogHero` then `ArticleWithToc` for long guides or `ArticleWithSidebar` when the sidebar should carry a CTA, then related `MediaCards`.
 
-### Partials
-- Header with business name, phone number, CTA button
-- Footer with address, hours, phone, Google Maps link
+## Documentation and knowledge base
 
-### Key sections
-Homepage: HeroWithMedia -> IconFeatures (services) -> TestimonialGrid -> JustStats (years, clients, projects) -> FaqsWithMedia -> FormInCard
+**Pages:** Docs home (`SimpleHero`, `IconFeatures` as topic tiles), one page per topic with `DocWithSidebar`, a glossary with `GlossaryAlphaNav`, release notes with `ChangelogShowcase`.
 
-### SEO priority
-- JSON-LD: LocalBusiness schema
-- Meta titles: `[Service] in [City] - [Business Name]`
-- Google Search Console integration essential
+**Collections:** Guides (`hasPages: true`) with difficulty (option), audience (text), category (reference), body (html), FAQ (html) so each guide can carry an `FAQPage` document.
 
----
+## Events and programs
 
-## Blog / Publication Site
+`CalendarView` for schedules bound to an Events collection (date fields), `ItineraryCards` for multi-day agendas, `HeroWithStats` for attendance numbers, `FormInCard` for registration.
 
-### Pages
-- **Homepage** -- featured article hero, recent posts grid, category navigation
-- **Category pages** -- filtered blog listings
-- **About** -- editorial team, mission
-- **Contact** or **Subscribe** -- newsletter form
+## E-commerce storefront (showcase)
 
-### Collections
-- **Articles** (`hasPages: true`) -- fields: title (text), content (html), excerpt (text), author (reference -> Team), featured_image (image), published_date (date), category (text), tags (text), read_time (number)
-- **Authors/Team** (`hasPages: true`) -- fields: name (text), bio (html), avatar (image), role (text), social (text)
-- **Categories** (`hasPages: false`) -- fields: name (text), description (text), slug (text)
+Pixelesq renders catalog and content; checkout runs on the commerce platform. **Pages:** Home (`HeroWithMediaBg`, collection-bound `MediaCards`, `IconFeatures` for shipping and returns, `TestimonialSlider`, `Banner`), category pages, About, Support (`FormInCard` and `Faqs`).
 
-### Partials
-- Header with logo, category nav, search
-- Footer with newsletter signup, category links, social
-
-### Key sections
-Homepage: BlogHero -> MediaCards (recent) -> CardWithMedia (featured) -> FormInCard (newsletter)
-
----
-
-## E-commerce Storefront
-
-### Pages
-- **Homepage** -- hero with featured products, categories, bestsellers, testimonials
-- **Category pages** -- product grids
-- **About** -- brand story
-- **Contact/Support** -- FormInCard with FAQ
-
-### Collections
-- **Products** (`hasPages: true`) -- fields: name (text), description (html), price (number), image (image), category (text), in_stock (boolean), sku (text)
-- **Categories** (`hasPages: false`) -- fields: name (text), description (text), image (image)
-- **Reviews** (`hasPages: false`) -- fields: customer (text), product (reference -> Products), rating (number), content (text), date (date)
-
-### Partials
-- Header with logo, category nav, cart icon
-- Footer with shipping info, return policy, support links
-
-### Key sections
-Homepage: HeroWithMediaBg -> MediaCards (featured products) -> IconFeatures (value props: free shipping, returns, support) -> TestimonialSlider -> Banner
+**Collections:** Products (`hasPages: true`): name, description (html), price (number), image (media), category (text), in_stock (boolean), sku (text). Reviews (`hasPages: false`): customer, product (reference), rating (number), content (text), date (date).

@@ -1,157 +1,47 @@
 ---
 name: analytics-growth
-description: Analyzes website traffic, search performance, form conversions, Web Vitals, and AI referral data to identify growth opportunities. Use when reviewing analytics, checking traffic, analyzing conversions, or monitoring site health.
+description: Reads and interprets a Pixelesq site's traffic, search performance, AI referrals, form submissions and page health to find growth opportunities and explain changes. Use when the user asks how the site is doing, where visitors come from, what to improve, or whether a change worked.
 license: MIT
 metadata:
   author: pixelesq
-  version: "1.0"
+  version: "3.0"
 ---
 
-# Pixelesq Analytics & Growth
+# Pixelesq Analytics and Growth
 
-## Traffic Analysis Framework
+## The tools and what they return
 
-Use `get_site_analytics` with period (`LAST_7_DAYS`, `LAST_28_DAYS`, `LAST_90_DAYS`) to pull traffic data.
+- `get_site_analytics` with `period` `LAST_7_DAYS`, `LAST_30_DAYS` or `LAST_90_DAYS`: `counts` for visits, pageviews, bounce rate and average duration, each with `current`, `previous`, `change` and `trend`, plus `topPages`, `topSources`, `topDevices`, `topLocations` and `topBrowsers` (null on a quiet site).
+- `get_ai_referral_analytics` with `days`: `totalHits`, `totalVisits`, `sources` (ChatGPT, Claude, Perplexity, Gemini, Copilot and others), `pages` that received the traffic, and a `trend`.
+- `get_search_performance` with `LAST_7_DAYS`, `LAST_28_DAYS` or `LAST_90_DAYS`: Search Console clicks, impressions, CTR and position. `get_all_page_statuses`, `get_page_index_status` and `inspect_url` cover indexing. These answer `null` when Search Console is not connected; check `get_gsc_connection_status` first and say plainly that it is not connected rather than reporting zero.
+- `get_form_submissions` for a form from `list_forms`: submissions with their field values, which are visitor data.
 
-### 5-step analysis
+Present numbers in the user's words: search clicks, search appearances, click rate, average ranking.
 
-**1. Volume trends**
-- Compare pageviews and unique visitors across periods
-- 7d for recent changes, 28d for trends, 90d for patterns
-- Growing visitors with stable pageviews = new audience. Growing pageviews with stable visitors = increased engagement.
+## Reading the traffic
 
-**2. Source breakdown**
-- **Organic search** -- visitors from Google, Bing, etc. Driven by SEO.
-- **Direct** -- typed URL or bookmarks. Indicates brand awareness.
-- **Referral** -- links from other sites. Check which sites are sending traffic.
-- **Social** -- from social media platforms.
-- **AI referral** -- from ChatGPT, Claude, Perplexity, Gemini, Copilot. See AI Referral Intelligence below.
+1. **Volume and trend:** compare `current` and `previous`; 7 days shows a recent change, 30 the standard view, 90 the season.
+2. **Sources:** organic search is SEO, direct is brand, referral is who links to you, social is campaigns, AI referral is the newest channel.
+3. **Top pages:** the pages that earn traffic are the ones to protect; pages with none are new, unindexed or not worth their slot.
+4. **Devices and places:** a mobile-heavy audience with a higher mobile bounce rate is a design problem, not a content one.
+5. **Engagement:** bounce rate is normal at 65 to 80 percent on posts, should sit near 40 to 60 on landing pages and 30 to 50 on a home page; average duration under 30 seconds means the page did not match what the visitor came for.
 
-**3. Top pages**
-- Which pages get the most traffic? These are your money pages -- protect and optimize them.
-- Which pages get zero traffic? Either they're new, not indexed, or not valuable.
-- Look for unexpected top pages -- they reveal what your audience actually wants.
+## The funnel
 
-**4. Device and geography**
-- Desktop vs mobile vs tablet split informs design priorities
-- Top countries/cities reveal your actual market (may differ from intended)
-- High mobile traffic + poor mobile experience = optimization opportunity
+Search appearances, then search clicks (`get_search_performance`), then visits and engagement (`get_site_analytics`), then submissions (`get_form_submissions`). Where the numbers drop tells you what to fix: few appearances means indexing or content gaps; low click rate means titles and descriptions; high bounce means the page and the query disagree; low submissions means form friction or placement.
 
-**5. Engagement quality**
-- **Bounce rate** -- percentage who leave after one page. Benchmarks:
-  - Blog posts: 65-80% (normal, people read and leave)
-  - Landing pages: 40-60% (should engage further)
-  - Homepage: 30-50% (should navigate deeper)
-  - If significantly above these, the page isn't meeting visitor expectations.
-- **Avg session duration** -- how long visitors stay. Under 30s suggests content mismatch. Over 2 minutes is strong engagement.
+## AI referrals
 
-## Funnel Mapping
+Read `get_ai_referral_analytics` for the last 30 and 90 days. To earn more: enable llms.txt and the sitemap in the project features, keep FAQ sections in a clear question and answer form, add schema.org structured data with `update_page_meta`, and write pages that state facts plainly with original data.
 
-Map the full journey from discovery to conversion using different tools:
+## Forms
 
-```
-GSC impressions     How often you appear in search
-      |
-GSC clicks          How often searchers click through
-      |
-Site visits         Actual page loads (get_site_analytics)
-      |
-Engagement          Bounce rate, time on site
-      |
-Conversion          Form submissions (get_form_submissions)
-```
-
-### Where to investigate drops
-
-- **Low impressions** -- content isn't ranking. Check indexing with `get_all_page_statuses`. Create more content targeting relevant queries.
-- **Low CTR (impressions -> clicks)** -- titles and descriptions aren't compelling. Optimize meta with `update_page_meta`. Check striking distance keywords.
-- **Low engagement (high bounce)** -- content doesn't match search intent. Review page content vs. the queries driving traffic.
-- **Low conversion (engagement -> submissions)** -- forms have friction. Review form placement, CTA clarity, form field count.
-
-## Form Submission Analysis
-
-Use `get_form_submissions` to review submissions for specific forms.
-
-### What to look for
-
-- **Volume over time** -- are submissions growing, stable, or declining?
-- **Source pages** -- which pages drive the most form submissions?
-- **Submission quality** -- are the leads relevant? Check fields like company, role, message.
-- **Abandonment signals** -- if a form has lots of page views but few submissions, it may have too many fields or unclear CTAs.
-
-### Optimization levers
-
-- Reduce form fields to essentials (name, email, message is often enough)
-- Place forms above the fold or immediately after social proof
-- Use FormInCard for visual prominence or SimpleForm for clean integration
-- Add a compelling CTA label ("Get your free consultation" vs "Submit")
-
-## AI Referral Intelligence
-
-AI platforms increasingly cite and link to websites. This traffic is growing rapidly and appears in `get_site_analytics` source data.
-
-### Tracked AI sources
-
-- `chatgpt.com` / `chat.openai.com` (ChatGPT)
-- `claude.ai` (Claude)
-- `perplexity.ai` (Perplexity)
-- `gemini.google.com` (Gemini)
-- `copilot.microsoft.com` (Copilot)
-
-### How to grow AI citations
-
-1. **Enable llms.txt** -- in project Settings > One-tap Features. Creates a machine-readable content summary that AI crawlers use.
-2. **Write clear, factual content** -- AI models prefer definitive, well-structured answers.
-3. **Use schema.org JSON-LD** -- structured data helps AI models understand content.
-4. **Maintain a sitemap** -- enable in project features for discoverability.
-5. **Answer specific questions** -- FAQ sections with clear Q&A format are frequently cited.
-6. **Be the authoritative source** -- original data, unique insights, and expert analysis get cited more.
+Volume over time, which pages send the submissions, lead quality, and abandonment signals (a form page with visits and no submissions). Levers: fewer fields, placement after proof, a card form (`FormInCard`) for prominence, a CTA label that says what happens next.
 
 ## Web Vitals
 
-Available via `get_all_page_statuses` in the `cwvCategory` field, plus individual metrics per page.
+Where Search Console reports them, page statuses carry a Core Web Vitals assessment. Good thresholds: LCP under 2.5 seconds, CLS under 0.1, INP under 200 milliseconds. Fixes on Pixelesq are usually image weight and sizes, which `upload_asset` optimizes, and section count above the fold.
 
-### The three Core Web Vitals
+## Answer with an action
 
-**LCP (Largest Contentful Paint)** -- loading performance
-- Good: < 2.5 seconds
-- Needs improvement: 2.5-4.0 seconds
-- Poor: > 4.0 seconds
-- Fix: optimize images, reduce server response time, minimize render-blocking resources
-
-**CLS (Cumulative Layout Shift)** -- visual stability
-- Good: < 0.1
-- Needs improvement: 0.1-0.25
-- Poor: > 0.25
-- Fix: set image dimensions, avoid inserting content above existing content, use font-display: swap
-
-**INP (Interaction to Next Paint)** -- interactivity
-- Good: < 200ms
-- Needs improvement: 200-500ms
-- Poor: > 500ms
-- Fix: optimize JavaScript, reduce main thread work, break up long tasks
-
-### Impact on SEO
-
-Google uses Core Web Vitals as a ranking factor. Pages with "Good" CWV have an advantage over competitors with poor scores. Check `get_all_page_statuses` to identify pages needing attention.
-
-## Period Comparison Strategy
-
-- **7 days** -- shows recent changes. Good for verifying if recent edits had an impact. Noisy for small sites.
-- **28 days** -- the standard analysis period. Smooths out daily fluctuations. Best for trend identification.
-- **90 days** -- reveals seasonal patterns and long-term trajectory. Compare 90d to understand if growth is sustained or one-off.
-
-**Comparison workflow:**
-1. Pull 28d data as the primary view
-2. Pull 90d data to see if current trends are new or continuing
-3. Pull 7d data only to check recent specific changes
-
-## Actionable Response Patterns
-
-When analyzing analytics, always pair observations with recommendations:
-
-- "Traffic is down 15% over 28 days" -> check if specific pages lost rankings (`get_search_performance`), check for indexing issues (`get_all_page_statuses`)
-- "Bounce rate is 85% on the homepage" -> review hero messaging, check if the page matches what searchers expect
-- "No AI referral traffic" -> enable llms.txt, add FAQ sections, improve structured data
-- "Form submissions dropped" -> check if form page traffic dropped, review form for new friction
-- "Mobile traffic is 70% but bounce rate is higher on mobile" -> flag potential mobile experience issues
+Pair every observation with the next tool call: traffic down over 30 days, check `get_search_performance` and `get_all_page_statuses`; home page bounce high, review the hero copy against the queries that bring people; no AI referrals, enable llms.txt and add FAQs; submissions down, check the form page's traffic first.

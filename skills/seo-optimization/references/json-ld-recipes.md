@@ -14,7 +14,7 @@
 - Service
 - Event
 
-Set JSON-LD via `update_page_meta` in the `jsonLd` field as a string.
+Set structured data with `update_page_meta`: `jsonLD` replaces the whole document (pass `""` to clear it), `jsonLDPatch` merges keys into the existing document. Both take the document as a JSON string and are validated as a schema.org node, an array of nodes, or an object with `@context` and `@graph`. Prefer the patch for single-key edits.
 
 ---
 
