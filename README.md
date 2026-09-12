@@ -1,5 +1,7 @@
 # Pixelesq Agent Skills
 
+[![smithery badge](https://smithery.ai/badge/pixelesq/pixelesq)](https://smithery.ai/servers/pixelesq/pixelesq)
+
 Manage websites built on [Pixelesq](https://www.pixelesq.com) from any AI agent. Build and edit pages section by section, write content into collections, tune SEO and structured data, read Search Console and site analytics, manage redirects and images, restyle the theme, and publish when the user says so.
 
 This repository is three things at once:
