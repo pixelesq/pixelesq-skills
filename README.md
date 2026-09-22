@@ -8,7 +8,7 @@ This repository is three things at once:
 
 - **Seven skills** in the [Agent Skills](https://agentskills.io) format, loaded by Claude Code, Cursor, Codex, Copilot, Gemini CLI, Goose and other compatible agents.
 - **Four specialist agents** for Claude Code (and any platform that reads `agents/*.md`).
-- **The Pixelesq MCP connector**, declared in `.mcp.json`: `https://mcp.pixelesq.app/mcp`, 65 tools, OAuth sign-in with your Pixelesq account.
+- **The Pixelesq MCP connector**, declared in `.mcp.json`: `https://mcp.pixelesq.app/mcp`, 68 tools, OAuth sign-in with your Pixelesq account.
 
 ## Install
 
@@ -61,7 +61,7 @@ Scopes are granted at sign-in and stamped into the token: `projects:read`, `cont
 
 ## How edits stay safe
 
-- Every save changes a draft. The live site changes only through `publish_page`, `publish_partial`, `publish_entry` and `update_theme` with `publish: true`, and the skills tell the agent to confirm first.
+- Every save changes a draft. The live site changes only through `publish_page`, `publish_partial`, `publish_entry`, `update_theme` with `publish: true` and `update_form_schema` (a form has no draft), and the skills tell the agent to confirm first.
 - Every save carries the `lastVersion` from the read before it; a stale version is refused instead of overwriting someone else's work.
 - A publish carries `expectedRevisionId` and `expectedHeadAnchor` from the read the user reviewed, and refuses if the draft moved.
 - Saves merge field by field, arrays replace whole, `null` clears a field. The agent only touches what the user asked for.
@@ -88,7 +88,7 @@ Scopes are granted at sign-in and stamped into the token: `projects:read`, `cont
 | [content-strategist](agents/content-strategist.md) | Brand-aligned writing and entry creation |
 | [design-consultant](agents/design-consultant.md) | Theme, typography, composition, section swaps |
 
-## The 65 tools
+## The 68 tools
 
 | Area | Tools |
 |---|---|
@@ -99,7 +99,7 @@ Scopes are granted at sign-in and stamped into the token: `projects:read`, `cont
 | Partials | `list_partials`, `get_partial_content`, `save_partial_content`, `publish_partial`, `unpublish_partial` |
 | SEO and analytics | `get_gsc_connection_status`, `get_search_performance`, `get_page_index_status`, `get_all_page_statuses`, `inspect_url`, `get_site_analytics`, `get_ai_referral_analytics` |
 | Redirects | `list_redirects`, `create_redirect`, `update_redirect`, `delete_redirect` |
-| Forms | `list_forms`, `get_form_submissions` |
+| Forms | `list_forms`, `get_form`, `create_form`, `update_form_schema`, `get_form_submissions` |
 | Assets and images | `list_assets`, `upload_asset`, `upload_image`, `search_stock_images`, `generate_image`, `get_image_job`, `get_imagegen_quota` |
 | Theme | `get_theme`, `update_theme` |
 

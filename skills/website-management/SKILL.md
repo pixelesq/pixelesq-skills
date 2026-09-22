@@ -19,7 +19,7 @@ Pixelesq is an AI-native website builder. A site is a **project**; a project has
 
 ## Safety rules that apply to every write
 
-- **Drafts, then publish.** Saves change the draft. Only `publish_page`, `publish_partial` and `publish_entry` change the live site. Confirm before publishing, unpublishing or deleting.
+- **Drafts, then publish.** Saves change the draft, and `publish_page`, `publish_partial` and `publish_entry` make it live. `update_theme` (unless `publish: false`) and `update_form_schema` change the live site directly, because the theme publishes by default and a form has no draft. Confirm before any of these, and before unpublishing or deleting.
 - **Version tokens.** Every read returns a `lastVersion`. Every save requires it and refuses a stale one. On a refusal, read again and reapply; never retry blindly.
 - **Publish what was reviewed.** Pass `expectedRevisionId` and `expectedHeadAnchor` from the read the user looked at. The server refuses if the draft changed since, which is the right outcome.
 - **Merge, do not replace.** Saves follow JSON Merge Patch: fields you send change, fields you omit stay, `null` clears, and arrays (`items`, `ctas`, `media`, `icons`, `menu`, `social`, `legal`) are replaced whole, so send the full array when you touch one element.
@@ -81,7 +81,9 @@ Field types: `text`, `html`, `number`, `boolean`, `date` (ISO string), `image` o
 
 ## Forms
 
-`list_forms` shows each form's schema; `get_form_submissions` returns submissions, which contain visitor data, so quote them only when asked. Forms are built in the dashboard; a section's `form.formId` references one.
+`list_forms` finds the project's forms and `get_form` returns one form's complete schema; `get_form_submissions` returns submissions, which contain visitor data, so quote them only when asked. A section's `form.formId` references a form.
+
+`create_form` builds a new form, which shows on the site once a section references it. `update_form_schema` edits one, and a form has no draft: on a published page the change is live at once, so confirm it with the user first. Send whole values (the full `fields` array, the full `scoring` object) and the `updatedAt` read from `get_form` as `expectedUpdatedAt`. For quizzes, scorecards and calculators, each option's points live in its field's `optionScores`; score mode sums them and shows the result card whose `scoreRange` holds the total.
 
 ## Assets and images
 

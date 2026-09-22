@@ -4,10 +4,10 @@ Skills, agents and the MCP connector for managing websites built on [Pixelesq](h
 
 ## Connector
 
-- Server: `https://mcp.pixelesq.app/mcp` (streamable HTTP, OAuth 2.1 with PKCE, 65 tools).
+- Server: `https://mcp.pixelesq.app/mcp` (streamable HTTP, OAuth 2.1 with PKCE, 68 tools).
 - Sign-in: Google, or a Pixelesq email and the code it sends.
 - Scopes granted at sign-in: `projects:read`, `content:read`, `content:write`, `publish`, `analytics:read`.
-- Edits land in drafts. The live site changes only through `publish_page`, `publish_partial`, `publish_entry` and `update_theme` with `publish: true`.
+- Edits land in drafts. The live site changes only through `publish_page`, `publish_partial`, `publish_entry`, `update_theme` with `publish: true` and `update_form_schema` (a form has no draft).
 
 ## Skills
 
@@ -35,5 +35,5 @@ Skills, agents and the MCP connector for managing websites built on [Pixelesq](h
 1. Confirm the project with `list_projects` when the user has more than one.
 2. Read before writing; every save carries the `lastVersion` from that read.
 3. Saves merge field by field; arrays replace whole; `null` clears a field.
-4. Publish, unpublish and delete only after the user says yes, with `expectedRevisionId` and `expectedHeadAnchor` from the read they reviewed.
+4. Publish, unpublish, delete and edit forms only after the user says yes, with `expectedRevisionId` and `expectedHeadAnchor` (for a form, `expectedUpdatedAt`) from the read they reviewed.
 5. Never invent business facts, numbers, names or quotes.

@@ -9,7 +9,7 @@ metadata:
 
 # Getting started with Pixelesq
 
-Pixelesq is an AI-native website builder. The Pixelesq MCP server lets an assistant read and change a Pixelesq site from a conversation: pages and sections, headers and footers, collections and entries, SEO and Search Console data, analytics, redirects, images and the theme. Edits land in drafts; nothing goes live until a publish tool runs.
+Pixelesq is an AI-native website builder. The Pixelesq MCP server lets an assistant read and change a Pixelesq site from a conversation: pages and sections, headers and footers, collections and entries, SEO and Search Console data, analytics, redirects, images, forms and the theme. Edits land in drafts and go live through a publish tool; the exceptions are `update_theme`, which publishes unless told not to, and `update_form_schema`, because a form has no draft.
 
 ## Connect
 
@@ -26,7 +26,7 @@ Server URL: `https://mcp.pixelesq.app/mcp` (streamable HTTP, OAuth 2.1 with PKCE
 
 Access is granted at sign-in and stamped into the token: `projects:read`, `content:read`, `content:write`, `publish`, `analytics:read`. A tool outside the grant answers with a refusal that asks the client to reconnect; do not retry it, tell the user.
 
-## The tool map (65 tools)
+## The tool map (68 tools)
 
 | Area | Tools |
 |---|---|
@@ -37,7 +37,7 @@ Access is granted at sign-in and stamped into the token: `projects:read`, `conte
 | Partials | `list_partials`, `get_partial_content`, `save_partial_content`, `publish_partial`, `unpublish_partial` |
 | SEO and analytics | `get_gsc_connection_status`, `get_search_performance`, `get_page_index_status`, `get_all_page_statuses`, `inspect_url`, `get_site_analytics`, `get_ai_referral_analytics` |
 | Redirects | `list_redirects`, `create_redirect`, `update_redirect`, `delete_redirect` |
-| Forms | `list_forms`, `get_form_submissions` |
+| Forms | `list_forms`, `get_form`, `create_form`, `update_form_schema`, `get_form_submissions` |
 | Assets and images | `list_assets`, `upload_asset`, `upload_image`, `search_stock_images`, `generate_image`, `get_image_job`, `get_imagegen_quota` |
 | Theme | `get_theme`, `update_theme` |
 
@@ -45,7 +45,7 @@ Claude clients are offered 62 of these: the three AI image generation tools are 
 
 ## Rules that keep edits safe
 
-1. Saves change drafts; `publish_*` tools change the live site. Confirm before publishing, unpublishing or deleting.
+1. Saves change drafts; `publish_*` tools change the live site, and so do `update_theme` (unless `publish: false`) and `update_form_schema` (a form has no draft). Confirm before any of these, and before unpublishing or deleting.
 2. Every save needs the `lastVersion` from the read before it. A stale version is refused: read again, reapply.
 3. Publishes carry `expectedRevisionId` and `expectedHeadAnchor` from the read the user reviewed.
 4. Saves merge; arrays replace whole; `null` clears.
