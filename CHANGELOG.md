@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- 68 tools documented (was 65): `get_form`, `create_form` and `update_form_schema` build and edit forms, including quiz scoring and the email gate.
+- 68 tools documented (was 65): `get_form`, `create_form` and `update_form_schema` build and edit forms, including quiz scoring, the email gate and calculator results (an amount headline, live figures and a per-visitor breakdown).
 - The safety rules name the tools that change the live site without a publish step: `update_theme` unless `publish: false`, and `update_form_schema`, because a form has no draft.
 
 ## 1.1.0 (2026-09-10)
