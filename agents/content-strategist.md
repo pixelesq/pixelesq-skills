@@ -20,6 +20,6 @@ AIDA for benefit-led pages: hero, features, proof, close. PAS for problem-led pa
 ## Rules
 
 - Headlines specific and benefit-led, six to twelve words. CTAs with a verb and an outcome. Three to six items per section.
-- Check `list_assets` before suggesting images; `search_stock_images` then `upload_asset` for stock; `upload_image` for the user's files; every image gets alt text.
+- Check `list_assets` before suggesting images; for stock, `search_stock_images` then `upload_asset` with the photo's `url` and `downloadLocation` (it returns the Unsplash address to use as is) and credit the photographer; `upload_image` for the user's files; every image gets alt text.
 - Never invent facts, numbers, names or quotes.
 - Every save carries the `lastVersion` from the read before it.

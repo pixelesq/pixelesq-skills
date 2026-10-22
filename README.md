@@ -8,7 +8,7 @@ This repository is three things at once:
 
 - **Seven skills** in the [Agent Skills](https://agentskills.io) format, loaded by Claude Code, Cursor, Codex, Copilot, Gemini CLI, Goose and other compatible agents.
 - **Four specialist agents** for Claude Code (and any platform that reads `agents/*.md`).
-- **The Pixelesq MCP connector**, declared in `.mcp.json`: `https://mcp.pixelesq.app/mcp`, 68 tools, OAuth sign-in with your Pixelesq account.
+- **The Pixelesq MCP connector**, declared in `.mcp.json`: `https://mcp.pixelesq.app/mcp`, 70 tools, OAuth sign-in with your Pixelesq account.
 
 ## Install
 
@@ -33,11 +33,11 @@ Settings, Connectors, Add custom connector, paste `https://mcp.pixelesq.app/mcp`
 
 ### ChatGPT
 
-Settings, Apps & Connectors, Advanced, developer mode, Create, paste `https://mcp.pixelesq.app/mcp`.
+Open Pixelesq in the ChatGPT plugin directory and connect; that listing uses `https://pixelesq-mcp.pixelesq.workers.dev/mcp`, the same server on its older address. To add the server by hand: Settings, turn on Developer mode (under Apps or Security and login), then Plugins, +, Add custom MCP server, paste `https://mcp.pixelesq.app/mcp`, set authentication to OAuth and install it. A connection made on one address does not carry over to the other.
 
 ### Cursor
 
-Install the plugin from the Cursor Marketplace, or add the server to `mcp.json`:
+Add the server to `mcp.json`:
 
 ```json
 { "mcpServers": { "pixelesq": { "url": "https://mcp.pixelesq.app/mcp" } } }
@@ -61,7 +61,7 @@ Scopes are granted at sign-in and stamped into the token: `projects:read`, `cont
 
 ## How edits stay safe
 
-- Every save changes a draft. The live site changes only through `publish_page`, `publish_partial`, `publish_entry`, `update_theme` with `publish: true` and `update_form_schema` (a form has no draft), and the skills tell the agent to confirm first.
+- Saves to pages, sections, headers, footers and entries change a draft, and `publish_page`, `publish_partial` and `publish_entry` make it live. A few writes change the live site right away: `update_page_meta` on a published page, the redirect tools, `update_collection_schema`, `update_entry` (a new name shows in listings), `delete_page`, `delete_entry`, `update_theme` (unless `publish: false`) and `update_form_schema` (a form has no draft). The skills tell the agent to confirm before any of these.
 - Every save carries the `lastVersion` from the read before it; a stale version is refused instead of overwriting someone else's work.
 - A publish carries `expectedRevisionId` and `expectedHeadAnchor` from the read the user reviewed, and refuses if the draft moved.
 - Saves merge field by field, arrays replace whole, `null` clears a field. The agent only touches what the user asked for.
@@ -88,11 +88,11 @@ Scopes are granted at sign-in and stamped into the token: `projects:read`, `cont
 | [content-strategist](agents/content-strategist.md) | Brand-aligned writing and entry creation |
 | [design-consultant](agents/design-consultant.md) | Theme, typography, composition, section swaps |
 
-## The 68 tools
+## The 70 tools
 
 | Area | Tools |
 |---|---|
-| Projects | `list_projects`, `get_project`, `list_domains`, `search_content` |
+| Projects | `list_projects`, `get_project`, `get_profile`, `list_domains`, `search_content` |
 | Pages | `list_pages`, `get_page`, `get_page_content`, `get_page_revisions`, `create_page`, `duplicate_page`, `update_page_meta`, `save_page_content`, `publish_page`, `unpublish_page`, `delete_page`, `revert_page_revision`, `revert_page_revision_to_version` |
 | Sections | `list_section_types`, `get_section_defaults`, `get_section_content`, `save_section_content`, `insert_section`, `remove_section`, `reorder_sections`, `bind_section_to_collection`, `unbind_section_from_collection` |
 | Collections and entries | `list_collections`, `get_collection`, `create_collection`, `update_collection_schema`, `list_entries`, `get_entry`, `create_entry`, `save_entry_content`, `update_entry`, `duplicate_entry`, `publish_entry`, `delete_entry` |
@@ -100,10 +100,10 @@ Scopes are granted at sign-in and stamped into the token: `projects:read`, `cont
 | SEO and analytics | `get_gsc_connection_status`, `get_search_performance`, `get_page_index_status`, `get_all_page_statuses`, `inspect_url`, `get_site_analytics`, `get_ai_referral_analytics` |
 | Redirects | `list_redirects`, `create_redirect`, `update_redirect`, `delete_redirect` |
 | Forms | `list_forms`, `get_form`, `create_form`, `update_form_schema`, `get_form_submissions` |
-| Assets and images | `list_assets`, `upload_asset`, `upload_image`, `search_stock_images`, `generate_image`, `get_image_job`, `get_imagegen_quota` |
+| Assets and images | `list_assets`, `update_asset`, `upload_asset`, `upload_image`, `search_stock_images`, `generate_image`, `get_image_job`, `get_imagegen_quota` |
 | Theme | `get_theme`, `update_theme` |
 
-Claude clients are offered 62 of these: the three AI image generation tools are withheld there and available in other clients. Read tools change nothing; write tools carry the hints that let clients ask before running them.
+Claude.ai, Claude Desktop and Cowork are offered 67 of these: the three AI image generation tools are withheld there, and in Claude Code unless its connection was registered dynamically. Other clients can get all 70. Read tools change nothing; write tools carry the hints that let clients ask before running them.
 
 ## Repository layout
 
@@ -135,7 +135,7 @@ pixelesq-skills/
 - The section guides are generated. Refresh `skills/website-management/references/section-catalog.json` from the connector's `list_section_types` (all groups, full detail), then run `node scripts/generate-section-guide.mjs`.
 - The tool map mirrors the connector's README, which is generated from the tool registry.
 - Validate before publishing: `claude plugin validate .`
-- The OpenAI plugin portal takes the skills as a ZIP: `node scripts/build-openai-bundle.mjs` writes `dist/pixelesq-openai-plugin.zip` (an Agent Plugins manifest plus `skills/`).
+- The ChatGPT plugin is updated with a ZIP on the OpenAI Plugins page (Upload plugin to make changes): run `npm run submission:chatgpt` in pixelesq-mcp, then `node scripts/build-openai-bundle.mjs` here writes `dist/pixelesq-chatgpt-<version>.zip` (the plugin manifest, `mcp.json`, the skills, the icon and the listing screenshots).
 
 ## Links
 
@@ -144,6 +144,7 @@ pixelesq-skills/
 - [Agent Skills](https://agentskills.io)
 - [Model Context Protocol](https://modelcontextprotocol.io)
 - [Privacy policy](https://www.pixelesq.com/legal/privacy-policy) and [terms](https://www.pixelesq.com/legal/terms-of-use)
+- Support: [hello@pixelesq.com](mailto:hello@pixelesq.com) · [Help center](https://www.pixelesq.com/help)
 
 ## License
 

@@ -1,6 +1,6 @@
 ---
 name: content-creation
-description: Writes and manages Pixelesq website content in the project's brand voice: blog posts and collection entries, landing pages built from sections, copy edits, images, and internal linking. Use when the user wants content written, rewritten, expanded or published on a Pixelesq site.
+description: "Writes and manages Pixelesq website content in the project's brand voice: blog posts and collection entries, landing pages built from sections, copy edits, images, and internal linking. Use when the user wants content written, rewritten, expanded or published on a Pixelesq site."
 license: MIT
 metadata:
   author: pixelesq
@@ -30,7 +30,7 @@ When these fields are empty, ask two or three questions (who it is for, what the
 1. `list_collections`, then `get_collection` for the exact field schema: `name`, `type`, `required`, and `list` (an array of values). Reference fields take entry ids.
 2. Draft the piece: title, excerpt, structure, then the body as HTML (`<h2>`, `<h3>`, `<p>`, `<ul>`, `<ol>`, `<strong>`, `<em>`, `<a href="/slug">`, `<blockquote>`). Short paragraphs, headings that scan, internal links with descriptive anchors.
 3. `create_entry` with name, slug and the content in one call (it validates against the schema and returns warnings), or `create_entry` then `save_entry_content` with the entry's `lastVersion` from `get_entry`.
-4. Images: `list_assets` first; `search_stock_images` then `upload_asset` for a stock photo; `upload_image` for a file the user has. Field type `media` takes `{ src, alt }`; always write the alt.
+4. Images: `list_assets` first. For a stock photo, `search_stock_images`, then `upload_asset` with the photo's `url` and `downloadLocation`: it reports the use to Unsplash and returns the photo's own address to use as is, and the photographer gets a credit. `upload_image` for a file the user has: an upload box in the chat, or a one-time upload command in clients that show no views. Field type `media` takes `{ src, alt }`; always write the alt.
 5. If the collection has pages, `get_entry` returns the entry's page; set its SEO fields with `update_page_meta` (title 50 to 60 characters, description 150 to 160, image, `jsonLDPatch` for structured data).
 6. Show the draft, then offer `publish_entry` with `expectedRevisionId` and `expectedHeadAnchor` from the last read.
 

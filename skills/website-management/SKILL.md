@@ -1,6 +1,6 @@
 ---
 name: website-management
-description: Manages Pixelesq websites through the Pixelesq MCP server: pages and their sections, headers and footers, collections and entries, forms, assets, domains and revisions, with the safety rules every write follows. Use for any request to read, build, edit, reorganize, publish or delete website content on a Pixelesq project.
+description: "Manages Pixelesq websites through the Pixelesq MCP server: pages and their sections, headers and footers, collections and entries, forms, assets, domains and revisions, with the safety rules every write follows. Use for any request to read, build, edit, reorganize, publish or delete website content on a Pixelesq project."
 license: MIT
 metadata:
   author: pixelesq
@@ -19,7 +19,7 @@ Pixelesq is an AI-native website builder. A site is a **project**; a project has
 
 ## Safety rules that apply to every write
 
-- **Drafts, then publish.** Saves change the draft, and `publish_page`, `publish_partial` and `publish_entry` make it live. `update_theme` (unless `publish: false`) and `update_form_schema` change the live site directly, because the theme publishes by default and a form has no draft. Confirm before any of these, and before unpublishing or deleting.
+- **Drafts, then publish.** Saves change the draft, and `publish_page`, `publish_partial` and `publish_entry` make it live. These change the live site right away: `update_page_meta` on a published page, `create_redirect`, `update_redirect`, `delete_redirect`, `update_collection_schema`, `update_entry` (a new name shows in listings), `delete_page`, `delete_entry`, `update_theme` (unless `publish: false`, because the theme publishes by default) and `update_form_schema` (a form has no draft). Confirm before any of these, and before unpublishing.
 - **Version tokens.** Every read returns a `lastVersion`. Every save requires it and refuses a stale one. On a refusal, read again and reapply; never retry blindly.
 - **Publish what was reviewed.** Pass `expectedRevisionId` and `expectedHeadAnchor` from the read the user looked at. The server refuses if the draft changed since, which is the right outcome.
 - **Merge, do not replace.** Saves follow JSON Merge Patch: fields you send change, fields you omit stay, `null` clears, and arrays (`items`, `ctas`, `media`, `icons`, `menu`, `social`, `legal`) are replaced whole, so send the full array when you touch one element.
@@ -40,7 +40,7 @@ Pixelesq is an AI-native website builder. A site is a **project**; a project has
 | Take offline | `unpublish_page` |
 | Remove | `delete_page` (permanent, confirm first) |
 
-**Revisions.** `get_page_revisions` lists a page's revisions. `revert_page_revision` makes a new draft from an older revision (the published one is untouched until you publish). `revert_page_revision_to_version` rolls a revision back to a numbered version and deletes the newer ones, which cannot be undone.
+**Revisions.** `get_page_revisions` lists a page's revisions. `revert_page_revision` makes a new draft from an older revision (the published one is untouched until you publish). `revert_page_revision_to_version` undoes recent saves on the current draft only: pass the draft head's revision id, the save number to keep (from its `saves`) and its `headAnchor` as `expectedHeadAnchor`. Newer saves are deleted, which cannot be undone.
 
 ## Sections
 
@@ -60,7 +60,7 @@ Prefer the section tools; they touch one section and leave the rest of the page 
 
 **Changing a section's component type** is not a save: `remove_section`, then `insert_section` with the new type from `get_section_defaults`.
 
-**Sections driven by a collection.** `bind_section_to_collection` makes a list-style section render entries from a collection; `unbind_section_from_collection` disconnects it. Content and layout stay as they are. A `BASE_VERSION_MISMATCH` answer means the section changed underneath you: read the page again and retry.
+**Sections driven by a collection.** `bind_section_to_collection` links a list-style section to a collection and sets which collection fields fill the section's items. Pass a field mapping, or leave it out: a section that already has a mapping keeps it, and otherwise the tool builds one from the collection's fields. If it answers with a warning that no mapping could be built, the section still shows its own static items, so tell the user instead of reporting success. `unbind_section_from_collection` removes the link and the mapping, and the static items show again. A `BASE_VERSION_MISMATCH` answer means the section changed underneath you: read the page again and retry.
 
 Choosing a section: [references/section-guide.md](references/section-guide.md) is the complete catalog generated from the live server. Site structures: [references/site-recipes.md](references/site-recipes.md).
 
@@ -87,11 +87,11 @@ Field types: `text`, `html`, `number`, `boolean`, `date` (ISO string), `image` o
 
 ## Assets and images
 
-- `list_assets` (search, tags, type) before proposing any new image.
-- `upload_asset` imports from a public URL or base64 bytes, optimizes to webp and returns the stored url for `media.src`. There is no replace-in-place: upload a new file and repoint.
-- `upload_image` opens an upload box in the chat for an image the user has locally; the asset url comes back when they drop it.
-- `search_stock_images` returns Unsplash candidates; import the chosen one with `upload_asset`.
-- `generate_image`, `get_imagegen_quota` and `get_image_job` create images with AI where the project has it enabled. They are not offered to Claude clients; when they are absent, use stock or uploaded images.
+- `list_assets` (search, tags, type) before proposing any new image. `update_asset` changes an asset's description and tags.
+- `upload_asset` imports from a public URL or base64 bytes, optimizes to webp and returns the stored url for `media.src`. There is no replace-in-place: upload a new file and repoint. Use base64 for small images only, because the whole file travels inside one call.
+- `upload_image` is for an image the user has on their device. Where the client shows views it opens an upload box in the chat, and the asset url comes back when they drop the file. In clients that show no views, such as Claude Code, it returns a one-time upload command instead: run it against the local file path, and the reply carries the asset url. If you cannot run commands, ask the user for a public URL and use `upload_asset`.
+- `search_stock_images` returns Unsplash candidates. To place one, pass its `url` and `downloadLocation` to `upload_asset`: for an Unsplash photo it reports the use to Unsplash and returns the photo's own `images.unsplash.com` address, which goes into `media.src` unchanged, query string included. The photo is not copied into the library. Credit the photographer ("Photo by <name> on Unsplash").
+- `generate_image`, `get_imagegen_quota` and `get_image_job` create images with AI where the project has it enabled. They are not offered in every client; when they are absent, use stock or uploaded images.
 
 ## Domains, redirects, theme, SEO, analytics
 

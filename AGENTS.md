@@ -4,10 +4,10 @@ Skills, agents and the MCP connector for managing websites built on [Pixelesq](h
 
 ## Connector
 
-- Server: `https://mcp.pixelesq.app/mcp` (streamable HTTP, OAuth 2.1 with PKCE, 68 tools).
+- Server: `https://mcp.pixelesq.app/mcp` (streamable HTTP, OAuth 2.1 with PKCE, 70 tools).
 - Sign-in: Google, or a Pixelesq email and the code it sends.
 - Scopes granted at sign-in: `projects:read`, `content:read`, `content:write`, `publish`, `analytics:read`.
-- Edits land in drafts. The live site changes only through `publish_page`, `publish_partial`, `publish_entry`, `update_theme` with `publish: true` and `update_form_schema` (a form has no draft).
+- Page, section, header, footer and entry edits land in drafts and go live through `publish_page`, `publish_partial` and `publish_entry`. These change the live site right away: `update_page_meta` on a published page, the redirect tools, `update_collection_schema`, `update_entry`, `delete_page`, `delete_entry`, `update_theme` (unless `publish: false`) and `update_form_schema` (a form has no draft).
 
 ## Skills
 

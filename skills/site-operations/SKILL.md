@@ -1,6 +1,6 @@
 ---
 name: site-operations
-description: Runs the operational side of a Pixelesq site: pre-launch checks, publishing order, domains, redirects, recovery from a bad change, and the monitoring routine after launch. Use when the user is launching, migrating, publishing a batch of changes, connecting a domain, or asking what to check regularly.
+description: "Runs the operational side of a Pixelesq site: pre-launch checks, publishing order, domains, redirects, recovery from a bad change, and the monitoring routine after launch. Use when the user is launching, migrating, publishing a batch of changes, connecting a domain, or asking what to check regularly."
 license: MIT
 metadata:
   author: pixelesq
