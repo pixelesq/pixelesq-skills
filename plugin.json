@@ -1,0 +1,28 @@
+{
+	"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+	"name": "pixelesq",
+	"version": "1.2.0",
+	"description": "Manage Pixelesq websites from a conversation: seven skills and the Pixelesq MCP connector for pages, sections, content collections, forms, SEO, analytics, redirects, images and themes.",
+	"author": {
+		"name": "Pixelesq",
+		"email": "hello@pixelesq.com",
+		"url": "https://www.pixelesq.com"
+	},
+	"homepage": "https://www.pixelesq.com/help/connect-claude",
+	"repository": "https://github.com/pixelesq/pixelesq-skills",
+	"license": "MIT",
+	"keywords": [
+		"pixelesq",
+		"website",
+		"website-builder",
+		"cms",
+		"seo",
+		"content",
+		"landing-page",
+		"blog",
+		"forms",
+		"analytics",
+		"publishing",
+		"mcp"
+	]
+}
