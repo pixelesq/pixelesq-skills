@@ -1,8 +1,8 @@
 {
 	"name": "pixelesq",
 	"displayName": "Pixelesq",
-	"version": "1.1.0",
-	"description": "Manage Pixelesq websites from a conversation: seven skills, four specialist agents and the Pixelesq MCP connector with 68 tools for pages, sections, content collections, forms, SEO, analytics, redirects, images and themes.",
+	"version": "1.2.0",
+	"description": "Manage Pixelesq websites from a conversation: seven skills, four specialist agents and the Pixelesq MCP connector with 70 tools for pages, sections, content collections, forms, SEO, analytics, redirects, images and themes.",
 	"author": {
 		"name": "Pixelesq",
 		"email": "hello@pixelesq.com",

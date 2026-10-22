@@ -1,9 +1,17 @@
 # Changelog
 
-## Unreleased
+## 1.2.0 (2026-10-22)
 
-- 68 tools documented (was 65): `get_form`, `create_form` and `update_form_schema` build and edit forms, including quiz scoring, the email gate and calculator results (an amount headline, live figures and a per-visitor breakdown).
-- The safety rules name the tools that change the live site without a publish step: `update_theme` unless `publish: false`, and `update_form_schema`, because a form has no draft.
+- 70 tools documented (was 65): `get_form`, `create_form` and `update_form_schema` build and edit forms, including quiz scoring, the email gate and calculator results (an amount headline, live figures and a per-visitor breakdown); `get_profile` reads the signed-in account; `update_asset` changes an asset's description and tags.
+- The safety rules name every tool that changes the live site without a publish step: `update_page_meta` on a published page, the redirect tools, `update_collection_schema`, `update_entry`, `delete_page`, `delete_entry`, `update_theme` unless `publish: false`, and `update_form_schema`, because a form has no draft.
+- Stock photos are placed with their Unsplash address and a photographer credit, and `upload_asset` reports the use to Unsplash instead of copying the photo.
+- `upload_image` in clients without views (Claude Code) returns a one-time upload command for a local file.
+- Binding a section to a collection sets the field mapping, and a binding that cannot be mapped is reported.
+- The count of tools offered in claude.ai, Claude Desktop and Cowork is 67 (the three AI image generation tools are withheld there).
+- ChatGPT steps follow the current Developer mode and Plugins flow, and the ChatGPT listing's address is named.
+- Cursor: the README leads with `mcp.json`, and the plugin homepage points at the Cursor install steps.
+- Frontmatter descriptions with a colon are quoted, so every skill and agent parses as strict YAML.
+- A root `plugin.json` for agent plugin directories, and `scripts/build-openai-bundle.mjs` builds the ChatGPT plugin ZIP for the OpenAI Plugins page.
 
 ## 1.1.0 (2026-09-10)
 

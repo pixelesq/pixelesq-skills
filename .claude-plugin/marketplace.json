@@ -6,14 +6,14 @@
 		"url": "https://github.com/pixelesq"
 	},
 	"description": "Skills, agents and the MCP connector for managing websites built on Pixelesq.",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"plugins": [
 		{
 			"name": "pixelesq",
 			"source": "./",
 			"displayName": "Pixelesq",
-			"description": "Manage Pixelesq websites from a conversation: seven skills, four specialist agents and the Pixelesq MCP connector with 68 tools for pages, sections, content collections, forms, SEO, analytics, redirects, images and themes.",
-			"version": "1.1.0",
+			"description": "Manage Pixelesq websites from a conversation: seven skills, four specialist agents and the Pixelesq MCP connector with 70 tools for pages, sections, content collections, forms, SEO, analytics, redirects, images and themes.",
+			"version": "1.2.0",
 			"author": {
 				"name": "Pixelesq",
 				"email": "hello@pixelesq.com",
