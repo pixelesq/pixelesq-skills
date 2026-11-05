@@ -9,6 +9,7 @@
 		"url": "https://www.pixelesq.com"
 	},
 	"homepage": "https://www.pixelesq.com/docs/integrations/claude",
+	"privacyPolicyUrl": "https://www.pixelesq.com/legal/privacy-policy",
 	"repository": "https://github.com/pixelesq/pixelesq-skills",
 	"license": "MIT",
 	"keywords": [

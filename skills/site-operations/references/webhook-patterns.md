@@ -74,7 +74,6 @@ Type: POST
 Event: entry.published
 URL: https://your-api.com/webhooks/pixelesq
 Type: POST
-Headers: { "Authorization": "Bearer YOUR_TOKEN" }
 Body: {
   "event": "entry.published",
   "entry_id": "{{entry_id}}",

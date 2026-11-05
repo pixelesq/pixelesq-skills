@@ -2,13 +2,13 @@
 // changes" on the OpenAI Plugins page: a root plugin.json in the Agent Plugins
 // 1.0.0 schema, mcp.json, the skills and the assets. The listing, review and
 // release fields, the server block and the images come from pixelesq-mcp: run
-// npm run submission:chatgpt there first (PIXELESQ_MCP_DIR overrides
+// npm run submission:chatgpt there first (a folder argument overrides
 // ../pixelesq-mcp).
 import { execFileSync } from "node:child_process";
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
-const mcpDir = process.env.PIXELESQ_MCP_DIR || "../pixelesq-mcp";
+const mcpDir = process.argv[2] || "../pixelesq-mcp";
 const chatgpt = JSON.parse(readFileSync(join(mcpDir, "docs/chatgpt-plugin.json"), "utf8"));
 const claude = JSON.parse(readFileSync(".claude-plugin/plugin.json", "utf8"));
 const stage = "dist/pixelesq";
